@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cecilia Miranda Garcés</title>
+    <style>
+        :root {
+            --bg-color: #f4f4f4; /* Un gris muy pálido, casi papel */
+            --line-color: #000;
+            --text-main: #1a1a1a;
+            --accent: #333;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Courier New', Courier, monospace; /* Tu lado coder/writer */
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+            box-sizing: border-box;
+        }
+
+        /* Estructura principal: Una Grilla Editorial */
+        .container {
+            display: grid;
+            grid-template-columns: 250px 1fr; /* Menú fijo a la izq, contenido a la der */
+            min-height: 100vh;
+            border-left: 1px solid var(--line-color);
+            border-right: 1px solid var(--line-color);
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #fff;
+        }
+
+        /* Columna Izquierda (Menú) */
+        aside {
+            border-right: 1px solid var(--line-color);
+            padding: 40px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Columna Derecha (Contenido) */
+        main {
+            padding: 0;
+        }
+
+        /* Tipografía Editorial */
+        h1 {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Toque Antimundo (Sólido) */
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 1.8rem;
+            margin: 0 0 10px 0;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        h2 {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            border-bottom: 1px solid var(--line-color);
+            padding: 20px 40px;
+            margin: 0;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            background-color: var(--bg-color);
+            position: sticky;
+            top: 0;
+        }
+
+        .role {
+            font-size: 0.85rem;
+            border-top: 1px solid var(--line-color);
+            padding-top: 10px;
+            margin-top: 10px;
+            display: block;
+        }
+
+        /* Navegación */
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 40px;
+        }
+
+        nav li {
+            margin-bottom: 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 1.1rem;
+            display: block;
+            transition: padding-left 0.3s;
+        }
+
+        nav a:hover {
+            padding-left: 10px; /* Pequeña animación interactiva */
+            font-style: italic;
+        }
+
+        /* Secciones de contenido */
+        .content-block {
+            padding: 40px;
+            border-bottom: 1px solid var(--line-color);
+        }
+
+        .content-block:last-child {
+            border-bottom: none;
+        }
+
+        /* Estilo de los items (Publicaciones, etc) */
+        .item {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            margin-bottom: 25px;
+        }
+
+        .year {
+            font-weight: bold;
+            opacity: 0.6;
+        }
+
+        .details strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .details a {
+            color: var(--text-main);
+            text-decoration: underline;
+        }
+
+        /* Footer en el menú lateral */
+        .contact-info {
+            font-size: 0.8rem;
+        }
+
+        /* RESPONSIVE (Móvil) */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr; /* Una sola columna */
+                border: none;
+            }
+            aside {
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid var(--line-color);
+                padding: 20px;
+            }
+            h2 {
+                position: relative;
+                padding: 15px 20px;
+            }
+            .content-block {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <aside>
+        <div>
+            <h1>Cecilia<br>Miranda<br>Garcés</h1>
+            <span class="role">Escritora / Investigadora / New Media</span>
+            
+            <nav>
+                <ul>
+                    <li><a href="#about">Sobre mí</a></li>
+                    <li><a href="#libros">Libros & Ensayos</a></li>
+                    <li><a href="#periodismo">Periodismo</a></li>
+                    <li><a href="#formacion">Formación</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="contact-info">
+            <p>Quito, Ecuador<br>
+            <a href="mailto:mirandagarces@gmail.com">mirandagarces@gmail.com</a></p>
+            <p>&copy; 2025</p>
+        </div>
+    </aside>
+
+    <main>
+        <section id="about" class="content-block">
+            <p style="font-size: 1.2rem; max-width: 600px;">
+                Investigo las intersecciones entre la literatura, la tecnología y el trauma. 
+                <br><br>
+                Mi trabajo transita entre la escritura académica, el periodismo de datos y la programación creativa ("Code Societies"). Busco entender cómo habitamos la "casa rota" del lenguaje en la era digital.
+            </p>
+        </section>
+
+        <section id="libros">
+            <h2>Publicaciones Académicas & Libros</h2>
+            <div class="content-block">
+                <div class="item">
+                    <span class="year">2026</span>
+                    <div class="details">
+                        <strong>El pulso del código</strong>
+                        <span>Ensayo. Cuenca: Casa Editorial del Municipio de Cuenca.</span>
+                    </div>
+                </div>
+                <div class="item">
+                    <span class="year">2024</span>
+                    <div class="details">
+                        <strong>La casa rota</strong>
+                        <span>Tesis de Maestría (Distinción). Universidad Andina Simón Bolívar.</span>
+                        <br><a href="https://repositorio.uasb.edu.ec/bitstream/10644/10056/1/T4398-ML-Miranda-La%20casa.pdf" target="_blank">Leer PDF →</a>
+                    </div>
+                </div>
+                 <div class="item">
+                    <span class="year">2024</span>
+                    <div class="details">
+                        <strong>Impulso poético y trauma en Fiebre de Carnaval</strong>
+                        <span>Artículo en Revista Ánima.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="periodismo">
+            <h2>Periodismo & No Ficción</h2>
+            <div class="content-block">
+                <div class="item">
+                    <span class="year">2025</span>
+                    <div class="details">
+                        <strong>La vibración de la ira</strong>
+                        <span>Antología V de la Feria del Libro de Nueva York. Smol Books.</span>
+                    </div>
+                </div>
+                <div class="item">
+                    <span class="year">2022</span>
+                    <div class="details">
+                        <strong>Ser mujer migrante en Ecuador</strong>
+                        <span>Investigación de datos para Indómita.</span>
+                        <br><a href="#" target="_blank">Ver proyecto →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="formacion">
+            <h2>Formación</h2>
+            <div class="content-block">
+                <div class="item">
+                    <span class="year">2025</span>
+                    <div class="details">
+                        <strong>School for Poetic Computation (NY)</strong>
+                        <span>Beca completa para el programa "Code Societies".</span>
+                    </div>
+                </div>
+                <div class="item">
+                    <span class="year">2016</span>
+                    <div class="details">
+                        <strong>University of Leeds (UK)</strong>
+                        <span>MA in New Media. Distinction.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+</body>
+</html>
