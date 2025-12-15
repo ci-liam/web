@@ -8,14 +8,15 @@
         :root {
             --bg-color: #111111; 
             --text-main: #E0E0E0;
-            --accent: #FFE600; /* Amarillo Eléctrico */
+            /* CAMBIO DE COLOR: Naranja Digital / Rojo Neón */
+            --accent: #FF4000; 
             --gray: #888;
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            /* Todo Sans-Serif */
+            /* TIPOGRAFÍA: Todo Sans-Serif limpio */
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
             margin: 0;
             padding: 0;
@@ -35,7 +36,7 @@
             border-bottom: 1px solid var(--accent);
         }
 
-        /* Botón de idioma (Ahora Sans-Serif también) */
+        /* Botón de idioma */
         .lang-switch {
             position: fixed;
             top: 20px;
@@ -47,12 +48,13 @@
             z-index: 1000;
             background: rgba(17, 17, 17, 0.9);
             letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .lang-switch:hover {
             border-color: var(--accent);
-            color: var(--bg-color); /* Texto negro al pasar el mouse */
-            background-color: var(--accent); /* Fondo amarillo */
+            color: var(--bg-color); /* Texto negro */
+            background-color: var(--accent); /* Fondo Naranja */
         }
 
         .container {
@@ -147,8 +149,7 @@
             color: var(--accent);
             margin-bottom: 10px;
             display: block;
-            /* Ya no es Courier, es Helvetica pero uppercase para diferenciar */
-            text-transform: uppercase; 
+            text-transform: uppercase;
             letter-spacing: 0.5px;
             font-weight: 500;
         }
