@@ -6,17 +6,15 @@
     <title>Cecilia Miranda Garcés</title>
     <style>
         :root {
-            /* Paleta inspirada en Antimundo: Oscura, limpia, texto blanco */
             --bg-color: #111111; 
             --text-main: #E0E0E0;
-            --accent: #CCFF00; /* Un verde lima/ácido como el "About" de la ref */
+            --accent: #00FF88;
             --gray: #888;
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            /* Tipografía Sans-Serif limpia (estilo Antimundo) */
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
             margin: 0;
             padding: 0;
@@ -24,7 +22,6 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Enlaces */
         a {
             color: var(--text-main);
             text-decoration: none;
@@ -37,17 +34,15 @@
             border-bottom: 1px solid var(--accent);
         }
 
-        /* Estructura Principal */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 60px 20px;
             display: grid;
-            grid-template-columns: 1fr 1.5fr; /* Columna Bio vs Columna Trabajo */
+            grid-template-columns: 1fr 1.5fr;
             gap: 80px;
         }
 
-        /* Columna Izquierda (Identidad + Bio) */
         .profile-section {
             position: sticky;
             top: 40px;
@@ -64,7 +59,7 @@
 
         .subtitle {
             font-size: 1rem;
-            color: var(--accent); /* El toque de color */
+            color: var(--accent);
             margin-bottom: 30px;
             display: block;
             font-weight: 500;
@@ -78,7 +73,6 @@
             color: #ccc;
         }
 
-        /* Redes Sociales (Iconos) */
         .social-links {
             display: flex;
             gap: 20px;
@@ -100,7 +94,6 @@
             border: none;
         }
 
-        /* Columna Derecha (Proyectos) */
         .work-section h2 {
             font-size: 0.9rem;
             text-transform: uppercase;
@@ -133,7 +126,7 @@
             color: var(--accent);
             margin-bottom: 10px;
             display: block;
-            font-family: 'Courier New', monospace; /* Pequeño guiño al código */
+            font-family: 'Courier New', monospace;
         }
 
         .project-desc {
@@ -142,7 +135,6 @@
             max-width: 600px;
         }
 
-        /* Mobile */
         @media (max-width: 768px) {
             .container {
                 grid-template-columns: 1fr;
@@ -238,9 +230,6 @@
 
         </main>
     </div>
-
-</body>
-</html>
 
 </body>
 </html>
