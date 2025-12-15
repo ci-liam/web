@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,7 @@
         :root {
             --bg-color: #111111; 
             --text-main: #E0E0E0;
-            --accent: #00FF88;
+            --accent: #00FF88; /* Signal Green */
             --gray: #888;
         }
 
@@ -32,6 +32,24 @@
         a:hover {
             color: var(--accent);
             border-bottom: 1px solid var(--accent);
+        }
+
+        /* Language Switcher */
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            border: 1px solid var(--gray);
+            padding: 5px 10px;
+            z-index: 1000;
+            background: rgba(17, 17, 17, 0.8);
+        }
+
+        .lang-switch:hover {
+            border-color: var(--accent);
+            color: var(--accent);
         }
 
         .container {
@@ -151,20 +169,22 @@
 </head>
 <body>
 
+    <a href="es.html" class="lang-switch">ES</a>
+
     <div class="container">
         <aside class="profile-section">
             <h1>Cecilia Miranda Garcés</h1>
-            <span class="subtitle">Artista de Medios / Escritora / Investigadora</span>
+            <span class="subtitle">Media Artist / Writer / Researcher</span>
             
             <div class="bio-text">
                 <p>
-                    Mi práctica artística y literaria explora las fricciones entre la memoria humana y la memoria de la máquina.
+                    My artistic and literary practice explores the frictions between human memory and machine memory.
                 </p>
                 <p>
-                    No distingo entre el código y la palabra: ambos son lenguaje. Trabajo desde la "escritura expandida", creando instalaciones interactivas, ensayos sobre tecnología y archivos poéticos.
+                    I make no distinction between code and word: both are language. I work through "expanded writing," creating interactive installations, essays on technology, and poetic archives.
                 </p>
                 <p>
-                    Máster en New Media (University of Leeds) y Literatura (UASB). Mi trabajo reciente investiga cómo habitamos el trauma y el afecto dentro de las interfaces digitales.
+                    MA in New Media (University of Leeds) and Literature (UASB). My recent work investigates how we inhabit trauma and affect within digital interfaces.
                 </p>
             </div>
 
@@ -181,13 +201,13 @@
         <main class="work-section">
             
             <div class="project-block">
-                <h2>Práctica Artística</h2>
+                <h2>Artistic Practice</h2>
                 
                 <div class="project-item">
                     <span class="project-title">Memory Flux</span>
-                    <span class="project-meta">Bienal Universitaria de Arte Multimedia (BUAM) 2025</span>
+                    <span class="project-meta">University Multimedia Art Biennial (BUAM) 2025</span>
                     <div class="project-desc">
-                        Instalación interactiva que combina una interfaz digital (programa poético) con un componente físico de escritura análoga. La obra explora la persistencia y la degradación de la memoria en la era del almacenamiento infinito.
+                        Interactive installation combining a digital interface (poetic software) with a physical analog writing component. The work explores the persistence and degradation of memory in the era of infinite storage.
                     </div>
                 </div>
 
@@ -195,19 +215,19 @@
                     <span class="project-title">Code Societies</span>
                     <span class="project-meta">School for Poetic Computation, NY (2025)</span>
                     <div class="project-desc">
-                        Investigación y desarrollo de código crítico. Exploración de los protocolos sociales incrustados en la infraestructura de la red.
+                        Research and development of critical code. Exploration of social protocols embedded within network infrastructure.
                     </div>
                 </div>
             </div>
 
             <div class="project-block">
-                <h2>Ensayos & Publicaciones</h2>
+                <h2>Essays & Publications</h2>
 
                 <div class="project-item">
                     <span class="project-title">Revista Mil Machetes</span>
-                    <span class="project-meta">Ensayo / Crítica Cultural</span>
+                    <span class="project-meta">Essay / Cultural Criticism</span>
                     <div class="project-desc">
-                        Serie de colaboraciones ensayísticas sobre cultura visual y política contemporánea.
+                        Series of essayistic collaborations on visual culture and contemporary politics.
                     </div>
                 </div>
 
@@ -215,15 +235,15 @@
                     <span class="project-title">El pulso del código</span>
                     <span class="project-meta">Casa Editorial del Municipio de Cuenca (2026)</span>
                     <div class="project-desc">
-                        Colección de ensayos ganadora de la Convocatoria Editorial 2025. Un análisis sobre cómo la programación moldea nuestra percepción del tiempo y el cuerpo.
+                        Essay collection, winner of the 2025 Editorial Call. An analysis of how programming shapes our perception of time and the body.
                     </div>
                 </div>
 
                 <div class="project-item">
                     <span class="project-title">La vibración de la ira</span>
-                    <span class="project-meta">Antología Feria del Libro de NY (Smol Books, 2025)</span>
+                    <span class="project-meta">NYC Book Fair Anthology (Smol Books, 2025)</span>
                     <div class="project-desc">
-                        Crónica narrativa de no-ficción seleccionada para la V Antología de la Feria.
+                        Narrative non-fiction chronicle selected for the V Anthology of the Book Fair.
                     </div>
                 </div>
             </div>
