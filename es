@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cecilia Miranda Garcés</title>
+    <style>
+        :root {
+            --bg-color: #111111; 
+            --text-main: #E0E0E0;
+            --accent: #00FF88;
+            --gray: #888;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: var(--text-main);
+            text-decoration: none;
+            border-bottom: 1px solid var(--gray);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent);
+            border-bottom: 1px solid var(--accent);
+        }
+
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            border: 1px solid var(--gray);
+            padding: 5px 10px;
+            z-index: 1000;
+            background: rgba(17, 17, 17, 0.8);
+        }
+
+        .lang-switch:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 80px;
+        }
+
+        .profile-section {
+            position: sticky;
+            top: 40px;
+            height: fit-content;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            letter-spacing: -1px;
+            color: var(--text-main);
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: var(--accent);
+            margin-bottom: 30px;
+            display: block;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .bio-text {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            color: #ccc;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-links svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--text-main);
+            transition: fill 0.3s ease;
+        }
+
+        .social-links a:hover svg {
+            fill: var(--accent);
+        }
+        
+        .social-links a {
+            border: none;
+        }
+
+        .work-section h2 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gray);
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+
+        .project-block {
+            margin-bottom: 50px;
+        }
+
+        .project-item {
+            margin-bottom: 35px;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-main);
+        }
+
+        .project-meta {
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+            display: block;
+            font-family: 'Courier New', monospace;
+        }
+
+        .project-desc {
+            font-size: 1rem;
+            color: #bbb;
+            max-width: 600px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 50px;
+                padding: 40px 20px;
+            }
+            .profile-section {
+                position: relative;
+                top: 0;
+            }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="lang-switch">EN</a>
+
+    <div class="container">
+        <aside class="profile-section">
+            <h1>Cecilia Miranda Garcés</h1>
+            <span class="subtitle">Artista de Medios / Escritora / Investigadora</span>
+            
+            <div class="bio-text">
+                <p>
+                    Mi práctica artística y literaria explora las fricciones entre la memoria humana y la memoria de la máquina.
+                </p>
+                <p>
+                    No distingo entre el código y la palabra: ambos son lenguaje. Trabajo desde la "escritura expandida", creando instalaciones interactivas, ensayos sobre tecnología y archivos poéticos.
+                </p>
+                <p>
+                    Máster en New Media (University of Leeds) y Literatura (UASB). Mi trabajo reciente investiga cómo habitamos el trauma y el afecto dentro de las interfaces digitales.
+                </p>
+            </div>
+
+            <div class="social-links">
+                <a href="https://substack.com/@tusuario" target="_blank" aria-label="Substack">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
+                </a>
+                <a href="https://instagram.com/tusuario" target="_blank" aria-label="Instagram">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+            </div>
+        </aside>
+
+        <main class="work-section">
+            
+            <div class="project-block">
+                <h2>Práctica Artística</h2>
+                
+                <div class="project-item">
+                    <span class="project-title">Memory Flux</span>
+                    <span class="project-meta">Bienal Universitaria de Arte Multimedia (BUAM) 2025</span>
+                    <div class="project-desc">
+                        Instalación interactiva que combina una interfaz digital (programa poético) con un componente físico de escritura análoga. La obra explora la persistencia y la degradación de la memoria en la era del almacenamiento infinito.
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <span class="project-title">Code Societies</span>
+                    <span class="project-meta">School for Poetic Computation, NY (2025)</span>
+                    <div class="project-desc">
+                        Investigación y desarrollo de código crítico. Exploración de los protocolos sociales incrustados en la infraestructura de la red.
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-block">
+                <h2>Ensayos & Publicaciones</h2>
+
+                <div class="project-item">
+                    <span class="project-title">Revista Mil Machetes</span>
+                    <span class="project-meta">Ensayo / Crítica Cultural</span>
+                    <div class="project-desc">
+                        Serie de colaboraciones ensayísticas sobre cultura visual y política contemporánea.
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <span class="project-title">El pulso del código</span>
+                    <span class="project-meta">Casa Editorial del Municipio de Cuenca (2026)</span>
+                    <div class="project-desc">
+                        Colección de ensayos ganadora de la Convocatoria Editorial 2025. Un análisis sobre cómo la programación moldea nuestra percepción del tiempo y el cuerpo.
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <span class="project-title">La vibración de la ira</span>
+                    <span class="project-meta">Antología Feria del Libro de NY (Smol Books, 2025)</span>
+                    <div class="project-desc">
+                        Crónica narrativa de no-ficción seleccionada para la V Antología de la Feria.
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+</body>
+</html>
