@@ -8,13 +8,14 @@
         :root {
             --bg-color: #111111; 
             --text-main: #E0E0E0;
-            --accent: #00FF88; /* Signal Green */
+            --accent: #FFE600; /* Amarillo Eléctrico */
             --gray: #888;
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
+            /* Todo Sans-Serif */
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
             margin: 0;
             padding: 0;
@@ -34,22 +35,24 @@
             border-bottom: 1px solid var(--accent);
         }
 
-        /* Language Switcher */
+        /* Botón de idioma (Ahora Sans-Serif también) */
         .lang-switch {
             position: fixed;
             top: 20px;
             right: 20px;
-            font-family: 'Courier New', monospace;
-            font-weight: bold;
+            font-weight: 700;
+            font-size: 0.9rem;
             border: 1px solid var(--gray);
-            padding: 5px 10px;
+            padding: 5px 12px;
             z-index: 1000;
-            background: rgba(17, 17, 17, 0.8);
+            background: rgba(17, 17, 17, 0.9);
+            letter-spacing: 1px;
         }
 
         .lang-switch:hover {
             border-color: var(--accent);
-            color: var(--accent);
+            color: var(--bg-color); /* Texto negro al pasar el mouse */
+            background-color: var(--accent); /* Fondo amarillo */
         }
 
         .container {
@@ -144,7 +147,10 @@
             color: var(--accent);
             margin-bottom: 10px;
             display: block;
-            font-family: 'Courier New', monospace;
+            /* Ya no es Courier, es Helvetica pero uppercase para diferenciar */
+            text-transform: uppercase; 
+            letter-spacing: 0.5px;
+            font-weight: 500;
         }
 
         .project-desc {
