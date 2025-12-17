@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cecilia Miranda Garcés</title>
     <style>
-    
+        /* --- CORE DESIGN (BLUE) --- */
         :root {
             --bg-color: #0022FF; 
             --text-color: #FFFFFF;
@@ -19,16 +19,18 @@
             height: 100vh; width: 100vw;
             overflow: hidden; position: relative;
         }
+        /* Language Switcher */
         .lang-switch {
             position: fixed; top: 20px; right: 20px;
             color: var(--text-color); text-decoration: none;
             font-weight: bold; border: 1px solid var(--text-color);
             padding: 5px 10px; z-index: 100; border-radius: 20px;
-            font-size: 0.9rem;
+            font-size: 0.9rem; transition: all 0.3s;
         }
         .lang-switch:hover {
             background: var(--accent); color: var(--bg-color); border-color: var(--accent);
         }
+        /* Center Info */
         .center-piece {
             position: absolute; top: 50%; left: 50%;
             transform: translate(-50%, -50%); text-align: center;
@@ -42,6 +44,7 @@
             font-family: 'Courier New', monospace; font-size: 1.1rem;
             margin-top: 15px; display: block; opacity: 0.8;
         }
+        /* Floating Buttons */
         .orbiter {
             position: absolute; background: transparent; color: var(--text-color);
             border: 1px solid var(--text-color); padding: 12px 24px;
@@ -64,6 +67,7 @@
         #btn-about { bottom: 20%; right: 20%; animation-delay: 3s; }
         #btn-email { bottom: 10%; left: 50%; transform: translateX(-50%); animation-delay: 4s; border-style: dashed; }
         
+        /* Modals */
         .modal-overlay {
             display: none; position: fixed; top: 0; left: 0;
             width: 100%; height: 100%; background: rgba(0, 34, 255, 0.95);
@@ -72,31 +76,26 @@
         .modal-content {
             background: transparent; width: 90%; max-width: 600px;
             text-align: left; position: relative;
-            /* Agregado para permitir scroll si la lista es muy larga en pantallas pequeñas */
             max-height: 85vh; overflow-y: auto; padding-right: 10px;
         }
-        /* Scrollbar personalizada minimalista */
         .modal-content::-webkit-scrollbar { width: 5px; }
         .modal-content::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
 
         .close-btn {
             position: absolute; top: 0; right: 0;
-            font-size: 2rem; cursor: pointer; color: var(--accent);
-            z-index: 201;
+            font-size: 2rem; cursor: pointer; color: var(--accent); z-index: 201;
         }
         .modal-content h2 {
             font-size: 2rem; border-bottom: 2px solid var(--accent);
             padding-bottom: 10px; margin-bottom: 30px; color: var(--accent); text-transform: uppercase;
             margin-top: 0;
         }
-        /* Estilos para subtítulos de categorías */
         .category-title {
             color: var(--accent); font-weight: bold; text-transform: uppercase;
             font-size: 0.9rem; margin-top: 25px; margin-bottom: 10px;
             font-family: 'Courier New', monospace; border-bottom: 1px dashed rgba(204, 255, 0, 0.3);
             display: inline-block;
         }
-
         .item-list a {
             display: block; color: #FFF; text-decoration: none;
             font-size: 1.3rem; margin-bottom: 15px;
@@ -120,26 +119,26 @@
 </head>
 <body>
 
-    <a href="index.html" class="lang-switch">EN</a>
+    <a href="es.html" class="lang-switch">ES</a>
 
     <div class="center-piece">
         <h1>Cecilia<br>Miranda<br>Garcés</h1>
         <span class="role">writer, researcher & creative coder</span>
     </div>
 
-    <div class="orbiter" id="btn-writing" onclick="openModal('modal-writing')">Escritura</div>
-    <div class="orbiter" id="btn-research" onclick="openModal('modal-research')">Investigación</div>
-    <div class="orbiter" id="btn-art" onclick="openModal('modal-art')">Arte</div>
-    <div class="orbiter" id="btn-about" onclick="openModal('modal-about')">Sobre mí</div>
-    <a href="mailto:mirandagarces@gmail.com" class="orbiter" id="btn-email">Escríbeme</a>
+    <div class="orbiter" id="btn-writing" onclick="openModal('modal-writing')">Writing</div>
+    <div class="orbiter" id="btn-research" onclick="openModal('modal-research')">Research</div>
+    <div class="orbiter" id="btn-art" onclick="openModal('modal-art')">Art</div>
+    <div class="orbiter" id="btn-about" onclick="openModal('modal-about')">About</div>
+    <a href="mailto:mirandagarces@gmail.com" class="orbiter" id="btn-email">Contact</a>
 
     <div id="modal-writing" class="modal-overlay">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-writing')">&times;</span>
-            <h2>Escritura</h2>
+            <h2>Writing</h2>
             <div class="item-list">
                 
-                <div class="category-title">LIBROS</div>
+                <div class="category-title">BOOKS</div>
                 <a href="https://cultura.cuenca.gob.ec/noticia/convocatoria-editorial-2025-anuncia-a-sus-ganadores/?doing_wp_cron=1765986439.9229109287261962890625" target="_blank">
                     El pulso del código 
                     <span class="meta">Casa Editorial Cuenca, 2026 (Forthcoming)</span>
@@ -149,7 +148,7 @@
                     <span class="meta">Corporación Kimirina, 2025</span>
                 </a>
 
-                <div class="category-title">POESÍA</div>
+                <div class="category-title">POETRY</div>
                 <a href="https://revistas.uasb.edu.ec/index.php/kipus/article/view/4492" target="_blank">
                     Poemas inéditos 
                     <span class="meta">Revista Kipus, 2024</span>
@@ -159,7 +158,7 @@
                     <span class="meta">Revista Pie de página, 2024</span>
                 </a>
 
-                <div class="category-title">ENSAYOS (SELECCIÓN)</div>
+                <div class="category-title">ESSAYS (SELECTED)</div>
                 <a href="https://milmachetes.com/colapsos-marcados-por-el-simbolo/" target="_blank">
                     Colapsos marcados por el símbolo 
                     <span class="meta">Revista Mil Machetes</span>
@@ -169,14 +168,14 @@
                     <span class="meta">Revista Mil Machetes</span>
                 </a>
 
-                <div class="category-title">PERIODISMO</div>
+                <div class="category-title">JOURNALISM</div>
                 <a href="#" style="pointer-events: none;">
                     La vibración de la ira 
-                    <span class="meta">V Antología Feria del Libro NY, 2025</span>
+                    <span class="meta">V Anthology NY Book Fair, 2025</span>
                 </a>
                 <a href="https://indomita.media/mujeres-migrantes-violencia-ecuador/" target="_blank">
                     Ser mujer migrante en Ecuador 
-                    <span class="meta">Indómita, 2022 (Periodismo de datos)</span>
+                    <span class="meta">Indómita, 2022 (Data Journalism)</span>
                 </a>
             </div>
         </div>
@@ -185,7 +184,7 @@
     <div id="modal-research" class="modal-overlay">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-research')">&times;</span>
-            <h2>Investigación</h2>
+            <h2>Research</h2>
             <div class="item-list">
                 <a href="https://revistas.usfq.edu.ec/index.php/anima/article/view/3255" target="_blank">
                     Impulso poético y trauma en Fiebre de Carnaval
@@ -193,7 +192,7 @@
                 </a>
                 <a href="https://repositorio.uasb.edu.ec/handle/10644/10056" target="_blank">
                     La casa rota
-                    <span class="meta">UASB, 2024 (Tesis de Maestría)</span>
+                    <span class="meta">UASB, 2024 (MA Thesis)</span>
                 </a>
                 <a href="https://repositorio.puce.edu.ec/handle/123456789/32317" target="_blank">
                     La curaduría de contenidos web y el periodismo
@@ -206,21 +205,21 @@
     <div id="modal-art" class="modal-overlay">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-art')">&times;</span>
-            <h2>Práctica Artística</h2>
+            <h2>Artistic Practice</h2>
             <div class="item-list">
-                <a href="#">Memory Flux <span class="meta">Bienal Universitaria 2025</span></a>
-                </div>
+                <a href="#">Memory Flux <span class="meta">University Biennial 2025</span></a>
+            </div>
         </div>
     </div>
 
     <div id="modal-about" class="modal-overlay">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-about')">&times;</span>
-            <h2>Sobre mí</h2>
+            <h2>About</h2>
             <p style="font-size: 1.2rem; line-height: 1.6;">
-                Soy escritora, investigadora y artista de medios. Exploro las fricciones entre la memoria humana y la memoria de la máquina. 
+                I am a writer, researcher and creative coder.
                 <br><br>
-                Cuento con Maestrías con Distinción en New Media (University of Leeds) y Literatura (UASB). Mi trabajo integra el análisis literario formal con la práctica computacional.
+                I hold MAs with Distinction in New Media (University of Leeds) and Literature (UASB). My work integrates formal literary analysis with computational practice.
             </p>
         </div>
     </div>
@@ -228,8 +227,6 @@
     <script>
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-        
-        // Cierra el modal si se hace clic fuera del contenido
         window.onclick = function(event) {
             if (event.target.classList.contains('modal-overlay')) {
                 event.target.style.display = "none";
