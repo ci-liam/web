@@ -61,7 +61,7 @@
             50% { transform: translateY(-15px); }
             100% { transform: translateY(0px); }
         }
-        /* Positions */
+        /* Positions (Desktop) */
         #btn-writing { top: 20%; left: 20%; animation-delay: 0s; }
         #btn-research { top: 20%; right: 20%; animation-delay: 1s; }
         #btn-art { bottom: 20%; left: 20%; animation-delay: 2s; }
@@ -114,13 +114,18 @@
             color: #eee;
         }
         
+        /* --- RESPONSIVE FIX --- */
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
             .orbiter { padding: 8px 16px; font-size: 0.9rem; animation: none; }
+            
             #btn-writing { top: 15%; left: 5%; }
             #btn-research { top: 25%; right: 5%; }
-            #btn-art { top: 65%; left: 5%; }
-            #btn-about { top: 75%; right: 5%; }
+            
+            /* BUG FIX: Reset bottom to auto so it doesn't stretch */
+            #btn-art { top: 65%; left: 5%; bottom: auto; }
+            #btn-about { top: 75%; right: 5%; bottom: auto; }
+            
             #btn-email { bottom: 5%; left: 50%; transform: translateX(-50%); }
             .modal-content { max-height: 80vh; }
         }
@@ -203,22 +208,22 @@
                 </a>
 
                 <a href="https://revistas.usfq.edu.ec/index.php/anima/article/view/3255" target="_blank">
-                    “Si no olvido, no crezco”: trauma en la novela Fiebre de Carnaval
+                    Trauma Narratives (Fiebre de Carnaval)
                     <span class="meta">Revista Ánima, vol. 4, 2024</span>
                 </a>
 
                 <a href="https://repositorio.uasb.edu.ec/handle/10644/10056" target="_blank">
                     La casa rota
-                    <span class="meta"> MA Thesis </span>
+                    <span class="meta">Expanded MA Thesis: Archive & Trauma Theory</span>
                 </a>
 
                 <a href="#" style="pointer-events: none;">
-                    Catalogación del patrimonio inmaterial de las comunidades indígenas del cantón Guaranda
-                    <span class="meta">Ethnography in Guaranda, Ecuador</span>
+                    Patrimonio Inmaterial
+                    <span class="meta">Ethnography in Guaranda</span>
                 </a>
 
                 <a href="#" style="pointer-events: none;">
-                    Understanding visual self-representations of people with invisible disabilities in social media 
+                    Visual Self-Representation and Disability Studies
                     <span class="meta">MA Dissertation, University of Leeds</span>
                 </a>
 
@@ -229,7 +234,7 @@
 
                 <div class="category-title">Research Skills</div>
                 <div class="skills-block">
-                    Comparative literature methods / Narratological analysis /  Close reading methods / Decolonial theory application / Digital humanities tools / NLP (Python) / Trauma studies frameworks / Visual social semiotic analysis / Ethnographic fieldwork / Speculative theory development / Content analysis 
+                    Qualitative analysis / Trauma studies frameworks / Comparative literature methods / Decolonial theory application / Visual social semiotic analysis / Ethnographic fieldwork / Digital humanities tools / NLP (Python) / Narratological analysis / Speculative theory development / Content analysis / Close reading methodologies
                 </div>
             </div>
         </div>
