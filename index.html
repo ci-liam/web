@@ -1,250 +1,340 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cecilia Miranda Garcés</title>
     <style>
-        /* --- ESTILOS GENERALES (Minimalismo / Sans-serif) --- */
+        /* --- ESTILOS GENERALES --- */
         body {
+            background-color: #0022ff; /* El "diseño azul" vibrante */
+            color: white;
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
-            color: #111; /* Negro suave */
-            background-color: #fdfdfd; /* Blanco casi puro */
+            height: 100vh;
+            overflow: hidden; /* Evita el scroll en el fondo, solo en las ventanas */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* --- CONTENEDOR PRINCIPAL --- */
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        /* --- HEADER --- */
-        header {
-            margin-bottom: 60px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
+        /* --- CENTRO (Hero) --- */
+        .hero {
+            text-align: center;
+            z-index: 1;
         }
 
         h1 {
-            font-size: 2.5em;
-            font-weight: 700;
+            font-size: 3.5rem;
             margin: 0;
-            letter-spacing: -1px;
+            letter-spacing: -2px;
+            font-weight: 700;
         }
 
         .subtitle {
-            font-size: 1.2em;
-            color: #666;
+            font-size: 1.2rem;
             margin-top: 10px;
             font-weight: 300;
-        }
-
-        /* --- NAVEGACIÓN --- */
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 60px;
-        }
-
-        nav ul li {
-            display: inline-block;
-            margin-right: 25px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #111;
-            font-weight: 600;
-            font-size: 1em;
-            border-bottom: 2px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        nav a:hover {
-            color: #008f39; /* Verde estilo Antimundo/Terminal */
-            border-bottom: 2px solid #008f39;
-        }
-
-        /* --- SECCIONES --- */
-        section {
-            margin-bottom: 60px;
-        }
-
-        h2 {
-            font-size: 1.5em;
-            border-bottom: 1px solid #000;
-            padding-bottom: 10px;
-            margin-bottom: 30px;
-            text-transform: uppercase;
+            opacity: 0.9;
             letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        h3 {
-            font-size: 1.1em;
-            margin-top: 30px;
-            margin-bottom: 15px;
+        /* --- BOTONES FLOTANTES --- */
+        .nav-dock {
+            margin-top: 50px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 1px solid white;
+            color: white;
+            padding: 10px 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
             font-weight: 600;
-            color: #444;
         }
 
-        /* --- LISTAS DE TRABAJO --- */
-        .work-list {
+        .nav-btn:hover {
+            background: white;
+            color: #0022ff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* --- VENTANAS (MODALES) --- */
+        .modal-overlay {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 34, 255, 0.8); /* Azul translúcido */
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .window {
+            background: #fdfdfd;
+            color: #111;
+            width: 90%;
+            max-width: 700px;
+            max-height: 80vh; /* Altura máxima del 80% de la pantalla */
+            border-radius: 8px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            animation: popIn 0.3s ease-out;
+        }
+
+        /* Cabecera de la ventana (estilo SO) */
+        .window-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f0f0f0;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .window-title {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .close-btn {
+            background: #ff4d4d;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .close-btn:hover {
+            background: #cc0000;
+        }
+
+        /* Contenido escroleable dentro de la ventana */
+        .window-content {
+            padding: 40px;
+            overflow-y: auto; /* Scroll interno */
+        }
+
+        /* --- ESTILOS DE TEXTO DENTRO DE LAS VENTANAS --- */
+        .category h3 {
+            border-bottom: 2px solid #0022ff;
+            display: inline-block;
+            margin-top: 30px;
+            padding-bottom: 5px;
+            color: #0022ff;
+        }
+        
+        .category:first-of-type h3 {
+            margin-top: 0;
+        }
+
+        ul {
             list-style: none;
             padding: 0;
         }
 
-        .work-list li {
+        li {
             margin-bottom: 15px;
-            padding-left: 0;
+            line-height: 1.5;
         }
 
-        /* --- ENLACES EN TEXTO --- */
         a {
+            color: #0022ff;
             text-decoration: none;
-            color: #111;
-            border-bottom: 1px dotted #999;
-            transition: color 0.2s;
+            font-weight: 600;
+            border-bottom: 1px dotted #0022ff;
         }
 
         a:hover {
-            color: #008f39; /* Verde acento al pasar el mouse */
-            background-color: #efffe0; /* Fondo sutil al pasar el mouse */
-            border-bottom: 1px solid #008f39;
+            background-color: #0022ff;
+            color: white;
         }
 
-        /* Footer simple */
-        footer {
-            margin-top: 80px;
-            font-size: 0.8em;
-            color: #888;
-            border-top: 1px solid #eee;
-            padding-top: 20px;
+        /* Animación de entrada */
+        @keyframes popIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
+
     </style>
 </head>
 <body>
 
-    <div class="container">
-        
-        <header>
-            <h1>Cecilia Miranda Garcés</h1>
-            <p class="subtitle">Writer, Researcher & Creative Coder</p>
-        </header>
+    <div class="hero">
+        <h1>Cecilia Miranda Garcés</h1>
+        <p class="subtitle">writer, researcher & creative coder</p>
 
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#writing">Writing</a></li>
-                <li><a href="#research">Research</a></li>
-                <li><a href="#projects">Projects</a></li>
-            </ul>
-        </nav>
-
-        <section id="about">
-            <h2>About</h2>
-            <p>
-                I am a writer, researcher and creative coder who investigates Latin American literature, 
-                computational practices and how weaving conveys knowledge.
-            </p>
-        </section>
-
-        <section id="writing">
-            <h2>Writing</h2>
-
-            <div class="category">
-                <h3>Books</h3>
-                <ul class="work-list">
-                    <li>
-                        <a href="https://cultura.cuenca.gob.ec/noticia/convocatoria-editorial-2025-anuncia-a-sus-ganadores/?doing_wp_cron=1765986439.9229109287261962890625" target="_blank">El pulso del código</a>. 
-                        Cuenca: Casa Editorial del Municipio de Cuenca, 2026. (Forthcoming).
-                    </li>
-                    <li>
-                        <a href="https://isbnecuador.com/catalogo.php?mode=detalle&nt=104715" target="_blank">Kimirina: 25 años de transformación de la salud comunitaria</a>. 
-                        Quito: Corporación Kimirina, 2025.
-                    </li>
-                </ul>
-            </div>
-
-            <div class="category">
-                <h3>Poetry</h3>
-                <ul class="work-list">
-                    <li>
-                        <a href="https://revistas.uasb.edu.ec/index.php/kipus/article/view/4492" target="_blank">"Poemas inéditos"</a>. 
-                        <em>Kipus: Revista Andina de Letras y Estudios Culturales</em>, no. 55, 2024, pp. 180-87.
-                    </li>
-                    <li>
-                        <a href="https://www.uartes.edu.ec/sitio/download/pdp13_d01_dosier-1-pdf/?wpdmdl=66958&masterkey" target="_blank">"El velo universal"</a>. 
-                        <em>Pie de página: Revista literaria de creación y crítica</em>, no. 13, 2024, pp. 99-104.
-                    </li>
-                </ul>
-            </div>
-
-            <div class="category">
-                <h3>Essays (Selected)</h3>
-                <ul class="work-list">
-                    <li>
-                        <a href="https://milmachetes.com/colapsos-marcados-por-el-simbolo/" target="_blank">"Colapsos marcados por el símbolo"</a>. 
-                        <em>Mil Machetes</em>.
-                    </li>
-                    <li>
-                        <a href="https://milmachetes.com/la-geometria-invisible-de-los-afectos/" target="_blank">"La geometría invisible de los afectos"</a>. 
-                        <em>Mil Machetes</em>.
-                    </li>
-                </ul>
-            </div>
-
-            <div class="category">
-                <h3>Journalism (Selected chronicles and features)</h3>
-                <ul class="work-list">
-                    <li>
-                        "La vibración de la ira". 
-                        <em>V Antología de la Feria del Libro de Nueva York</em>. New York: Smol Books, 2025.
-                    </li>
-                    <li>
-                        <a href="https://indomita.media/mujeres-migrantes-violencia-ecuador/" target="_blank">"Ser mujer migrante en Ecuador: un camino endurecido por la violencia"</a>. 
-                        <em>Indómita</em>, 2022. (Data journalism project).
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="research">
-            <h2>Research</h2>
-            <ul class="work-list">
-                <li>
-                    <a href="https://revistas.usfq.edu.ec/index.php/anima/article/view/3255" target="_blank">"Impulso poético y trauma en la novela Fiebre de Carnaval"</a>. 
-                    <em>Ánima</em>, vol. 4, 2024, pp. 81-97.
-                </li>
-                <li>
-                    <a href="https://repositorio.uasb.edu.ec/bitstream/10644/10056/1/T4398-ML-Miranda-%20La%20casa.pdf" target="_blank">La casa rota</a>. 
-                    Quito: Universidad Andina Simón Bolívar, 2024.
-                </li>
-                <li>
-                    <a href="https://repositorio.puce.edu.ec/handle/123456789/32317" target="_blank">"La curaduría de contenidos web y el periodismo"</a>. 
-                    Pontificia Universidad Católica del Ecuador, 2013.
-                </li>
-            </ul>
-        </section>
-
-        <section id="projects">
-            <h2>Projects</h2>
-            <ul class="work-list">
-                <li>
-                    <strong>Memory Flux.</strong> Computational installation. Bienal Universitaria 2025.
-                </li>
-                </ul>
-        </section>
-
-        <footer>
-            <p>&copy; 2025 Cecilia Miranda Garcés.</p>
-        </footer>
-
+        <div class="nav-dock">
+            <button class="nav-btn" onclick="openWindow('writing-modal')">Writing</button>
+            <button class="nav-btn" onclick="openWindow('research-modal')">Research</button>
+            <button class="nav-btn" onclick="openWindow('projects-modal')">Projects</button>
+            <button class="nav-btn" onclick="openWindow('about-modal')">About</button>
+        </div>
     </div>
 
+    <div id="writing-modal" class="modal-overlay" onclick="closeWindow(event, 'writing-modal')">
+        <div class="window" onclick="event.stopPropagation()"> <div class="window-header">
+                <span class="window-title">Writing_Portfolio.exe</span>
+                <button class="close-btn" onclick="closeWindow(null, 'writing-modal')">✕</button>
+            </div>
+            <div class="window-content">
+                <div class="category">
+                    <h3>Books</h3>
+                    <ul>
+                        <li>
+                            <a href="https://cultura.cuenca.gob.ec/noticia/convocatoria-editorial-2025-anuncia-a-sus-ganadores/?doing_wp_cron=1765986439.9229109287261962890625" target="_blank">El pulso del código</a>. 
+                            Cuenca: Casa Editorial del Municipio de Cuenca, 2026. (Forthcoming).
+                        </li>
+                        <li>
+                            <a href="https://isbnecuador.com/catalogo.php?mode=detalle&nt=104715" target="_blank">Kimirina: 25 años de transformación de la salud comunitaria</a>. 
+                            Quito: Corporación Kimirina, 2025.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="category">
+                    <h3>Poetry</h3>
+                    <ul>
+                        <li>
+                            <a href="https://revistas.uasb.edu.ec/index.php/kipus/article/view/4492" target="_blank">"Poemas inéditos"</a>. 
+                            <em>Kipus: Revista Andina de Letras y Estudios Culturales</em>, no. 55, 2024, pp. 180-87.
+                        </li>
+                        <li>
+                            <a href="https://www.uartes.edu.ec/sitio/download/pdp13_d01_dosier-1-pdf/?wpdmdl=66958&masterkey" target="_blank">"El velo universal"</a>. 
+                            <em>Pie de página: Revista literaria de creación y crítica</em>, no. 13, 2024, pp. 99-104.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="category">
+                    <h3>Essays (Selected)</h3>
+                    <ul>
+                        <li>
+                            <a href="https://milmachetes.com/colapsos-marcados-por-el-simbolo/" target="_blank">"Colapsos marcados por el símbolo"</a>. 
+                            <em>Mil Machetes</em>.
+                        </li>
+                        <li>
+                            <a href="https://milmachetes.com/la-geometria-invisible-de-los-afectos/" target="_blank">"La geometría invisible de los afectos"</a>. 
+                            <em>Mil Machetes</em>.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="category">
+                    <h3>Journalism</h3>
+                    <ul>
+                        <li>
+                            "La vibración de la ira". 
+                            <em>V Antología de la Feria del Libro de Nueva York</em>. New York: Smol Books, 2025.
+                        </li>
+                        <li>
+                            <a href="https://indomita.media/mujeres-migrantes-violencia-ecuador/" target="_blank">"Ser mujer migrante en Ecuador: un camino endurecido por la violencia"</a>. 
+                            <em>Indómita</em>, 2022.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="research-modal" class="modal-overlay" onclick="closeWindow(event, 'research-modal')">
+        <div class="window" onclick="event.stopPropagation()">
+            <div class="window-header">
+                <span class="window-title">Research_Papers.pdf</span>
+                <button class="close-btn" onclick="closeWindow(null, 'research-modal')">✕</button>
+            </div>
+            <div class="window-content">
+                <ul>
+                    <li>
+                        <a href="https://revistas.usfq.edu.ec/index.php/anima/article/view/3255" target="_blank">"Impulso poético y trauma en la novela Fiebre de Carnaval"</a>. 
+                        <em>Ánima</em>, vol. 4, 2024, pp. 81-97.
+                    </li>
+                    <li>
+                        <a href="https://repositorio.uasb.edu.ec/handle/10644/10056" target="_blank">La casa rota</a>. 
+                        Quito: Universidad Andina Simón Bolívar, 2024.
+                    </li>
+                    <li>
+                        <a href="https://repositorio.puce.edu.ec/handle/123456789/32317" target="_blank">"La curaduría de contenidos web y el periodismo"</a>. 
+                        Pontificia Universidad Católica del Ecuador, 2013.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="projects-modal" class="modal-overlay" onclick="closeWindow(event, 'projects-modal')">
+        <div class="window" onclick="event.stopPropagation()">
+            <div class="window-header">
+                <span class="window-title">Projects_Installation.exe</span>
+                <button class="close-btn" onclick="closeWindow(null, 'projects-modal')">✕</button>
+            </div>
+            <div class="window-content">
+                <ul>
+                    <li>
+                        <strong>Memory Flux.</strong> Computational installation. Bienal Universitaria 2025.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="about-modal" class="modal-overlay" onclick="closeWindow(event, 'about-modal')">
+        <div class="window" onclick="event.stopPropagation()">
+            <div class="window-header">
+                <span class="window-title">About_Me.txt</span>
+                <button class="close-btn" onclick="closeWindow(null, 'about-modal')">✕</button>
+            </div>
+            <div class="window-content">
+                <p>
+                    I am a writer, researcher, and creative coder exploring the intersections between literature, 
+                    computational practices, and Latin American experimental forms.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openWindow(id) {
+            document.getElementById(id).style.display = 'flex';
+        }
+
+        function closeWindow(event, id) {
+            // Si el evento existe (click fuera), cerramos. Si es null (botón X), cerramos directo.
+            if (!event || event.target.id === id) {
+                document.getElementById(id).style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>
 </body>
 </html>
              
