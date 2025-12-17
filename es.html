@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cecilia Miranda Garcés</title>
     <style>
-        /* MISMOS ESTILOS QUE EN INGLÉS PARA MANTENER LA IDENTIDAD */
+        /* --- CORE DESIGN (BLUE) --- */
         :root {
             --bg-color: #0022FF; 
             --text-color: #FFFFFF;
@@ -19,16 +19,18 @@
             height: 100vh; width: 100vw;
             overflow: hidden; position: relative;
         }
+        /* Language Switcher */
         .lang-switch {
             position: fixed; top: 20px; right: 20px;
             color: var(--text-color); text-decoration: none;
             font-weight: bold; border: 1px solid var(--text-color);
             padding: 5px 10px; z-index: 100; border-radius: 20px;
-            font-size: 0.9rem;
+            font-size: 0.9rem; transition: all 0.3s;
         }
         .lang-switch:hover {
             background: var(--accent); color: var(--bg-color); border-color: var(--accent);
         }
+        /* Center Info */
         .center-piece {
             position: absolute; top: 50%; left: 50%;
             transform: translate(-50%, -50%); text-align: center;
@@ -42,6 +44,7 @@
             font-family: 'Courier New', monospace; font-size: 1.1rem;
             margin-top: 15px; display: block; opacity: 0.8;
         }
+        /* Floating Buttons */
         .orbiter {
             position: absolute; background: transparent; color: var(--text-color);
             border: 1px solid var(--text-color); padding: 12px 24px;
@@ -64,6 +67,7 @@
         #btn-about { bottom: 20%; right: 20%; animation-delay: 3s; }
         #btn-email { bottom: 10%; left: 50%; transform: translateX(-50%); animation-delay: 4s; border-style: dashed; }
         
+        /* Modals */
         .modal-overlay {
             display: none; position: fixed; top: 0; left: 0;
             width: 100%; height: 100%; background: rgba(0, 34, 255, 0.95);
@@ -72,23 +76,34 @@
         .modal-content {
             background: transparent; width: 90%; max-width: 600px;
             text-align: left; position: relative;
+            max-height: 85vh; overflow-y: auto; padding-right: 10px;
         }
+        .modal-content::-webkit-scrollbar { width: 5px; }
+        .modal-content::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
+
         .close-btn {
-            position: absolute; top: -40px; right: 0;
-            font-size: 2rem; cursor: pointer; color: var(--accent);
+            position: absolute; top: 0; right: 0;
+            font-size: 2rem; cursor: pointer; color: var(--accent); z-index: 201;
         }
         .modal-content h2 {
             font-size: 2rem; border-bottom: 2px solid var(--accent);
             padding-bottom: 10px; margin-bottom: 30px; color: var(--accent); text-transform: uppercase;
+            margin-top: 0;
+        }
+        .category-title {
+            color: var(--accent); font-weight: bold; text-transform: uppercase;
+            font-size: 0.9rem; margin-top: 25px; margin-bottom: 10px;
+            font-family: 'Courier New', monospace; border-bottom: 1px dashed rgba(204, 255, 0, 0.3);
+            display: inline-block;
         }
         .item-list a {
             display: block; color: #FFF; text-decoration: none;
-            font-size: 1.5rem; margin-bottom: 20px;
+            font-size: 1.3rem; margin-bottom: 15px;
             border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 5px; transition: color 0.3s;
         }
         .item-list a:hover { color: var(--accent); padding-left: 10px; }
         .meta {
-            display: block; font-size: 0.9rem; opacity: 0.7; font-family: 'Courier New', monospace; margin-top: 5px;
+            display: block; font-size: 0.8rem; opacity: 0.7; font-family: 'Courier New', monospace; margin-top: 3px;
         }
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
@@ -98,6 +113,7 @@
             #btn-art { top: 65%; left: 5%; }
             #btn-about { top: 75%; right: 5%; }
             #btn-email { bottom: 5%; left: 50%; transform: translateX(-50%); }
+            .modal-content { max-height: 80vh; }
         }
     </style>
 </head>
@@ -107,7 +123,7 @@
 
     <div class="center-piece">
         <h1>Cecilia<br>Miranda<br>Garcés</h1>
-        <span class="role">código && poesía</span>
+        <span class="role">escritora, investigadora y programadora creativa</span>
     </div>
 
     <div class="orbiter" id="btn-writing" onclick="openModal('modal-writing')">Escritura</div>
@@ -121,9 +137,46 @@
             <span class="close-btn" onclick="closeModal('modal-writing')">&times;</span>
             <h2>Escritura</h2>
             <div class="item-list">
-                <a href="#">El pulso del código <span class="meta">Premio Editorial Cuenca 2025</span></a>
-                <a href="#">La vibración de la ira <span class="meta">Antología Feria del Libro NY</span></a>
-                <a href="#">Mil Machetes <span class="meta">Serie de Ensayos</span></a>
+                
+                <div class="category-title">LIBROS</div>
+                <a href="https://cultura.cuenca.gob.ec/noticia/convocatoria-editorial-2025-anuncia-a-sus-ganadores/?doing_wp_cron=1765986439.9229109287261962890625" target="_blank">
+                    El pulso del código 
+                    <span class="meta">Casa Editorial Cuenca, 2026 (Forthcoming)</span>
+                </a>
+                <a href="https://isbnecuador.com/catalogo.php?mode=detalle&nt=104715" target="_blank">
+                    Kimirina: 25 años de transformación
+                    <span class="meta">Corporación Kimirina, 2025</span>
+                </a>
+
+                <div class="category-title">POESÍA</div>
+                <a href="https://revistas.uasb.edu.ec/index.php/kipus/article/view/4492" target="_blank">
+                    Poemas inéditos 
+                    <span class="meta">Revista Kipus, 2024</span>
+                </a>
+                <a href="https://www.uartes.edu.ec/sitio/download/pdp13_d01_dosier-1-pdf/?wpdmdl=66958&masterkey" target="_blank">
+                    El velo universal 
+                    <span class="meta">Revista Pie de página, 2024</span>
+                </a>
+
+                <div class="category-title">ENSAYOS (SELECCIÓN)</div>
+                <a href="https://milmachetes.com/colapsos-marcados-por-el-simbolo/" target="_blank">
+                    Colapsos marcados por el símbolo 
+                    <span class="meta">Revista Mil Machetes</span>
+                </a>
+                <a href="https://milmachetes.com/la-geometria-invisible-de-los-afectos/" target="_blank">
+                    La geometría invisible de los afectos 
+                    <span class="meta">Revista Mil Machetes</span>
+                </a>
+
+                <div class="category-title">PERIODISMO</div>
+                <a href="#" style="pointer-events: none;">
+                    La vibración de la ira 
+                    <span class="meta">V Antología Feria del Libro NY, 2025</span>
+                </a>
+                <a href="https://indomita.media/mujeres-migrantes-violencia-ecuador/" target="_blank">
+                    Ser mujer migrante en Ecuador 
+                    <span class="meta">Indómita, 2022 (Periodismo de datos)</span>
+                </a>
             </div>
         </div>
     </div>
@@ -133,9 +186,18 @@
             <span class="close-btn" onclick="closeModal('modal-research')">&times;</span>
             <h2>Investigación</h2>
             <div class="item-list">
-                <a href="#">La casa rota <span class="meta">Tesis de Maestría (Distinción)</span></a>
-                <a href="https://sfpc.study/" target="_blank">Code Societies <span class="meta">School for Poetic Computation</span></a>
-                <a href="#">Descomposición como Operación Formal <span class="meta">Propuesta Doctoral</span></a>
+                <a href="https://revistas.usfq.edu.ec/index.php/anima/article/view/3255" target="_blank">
+                    Impulso poético y trauma en Fiebre de Carnaval
+                    <span class="meta">Revista Ánima, vol. 4, 2024</span>
+                </a>
+                <a href="https://repositorio.uasb.edu.ec/handle/10644/10056" target="_blank">
+                    La casa rota
+                    <span class="meta">UASB, 2024 (Tesis de Maestría)</span>
+                </a>
+                <a href="https://repositorio.puce.edu.ec/handle/123456789/32317" target="_blank">
+                    La curaduría de contenidos web y el periodismo
+                    <span class="meta">PUCE, 2013</span>
+                </a>
             </div>
         </div>
     </div>
@@ -146,7 +208,6 @@
             <h2>Práctica Artística</h2>
             <div class="item-list">
                 <a href="#">Memory Flux <span class="meta">Bienal Universitaria 2025</span></a>
-                <a href="#">Poéticas Algorítmicas <span class="meta">Instalación Interactiva</span></a>
             </div>
         </div>
     </div>
@@ -156,7 +217,7 @@
             <span class="close-btn" onclick="closeModal('modal-about')">&times;</span>
             <h2>Sobre mí</h2>
             <p style="font-size: 1.2rem; line-height: 1.6;">
-                Soy escritora, investigadora y artista de medios. Exploro las fricciones entre la memoria humana y la memoria de la máquina. 
+                Soy escritora, investigadora y programadora creativa. 
                 <br><br>
                 Cuento con Maestrías con Distinción en New Media (University of Leeds) y Literatura (UASB). Mi trabajo integra el análisis literario formal con la práctica computacional.
             </p>
@@ -166,6 +227,11 @@
     <script>
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.style.display = "none";
+            }
+        }
     </script>
 </body>
 </html>
