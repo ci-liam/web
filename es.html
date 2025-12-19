@@ -5,130 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cecilia Miranda Garcés</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%230022FF%22/></svg>">
-    <style>
-  
-        :root {
-            --bg-color: #0022FF; 
-            --text-color: #FFFFFF;
-            --accent: #CCFF00; 
-        }
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            margin: 0; padding: 0;
-            height: 100vh; width: 100vw;
-            overflow: hidden; position: relative;
-        }
-        .lang-switch {
-            position: fixed; top: 20px; right: 20px;
-            color: var(--text-color); text-decoration: none;
-            font-weight: bold; border: 1px solid var(--text-color);
-            padding: 5px 10px; z-index: 100; border-radius: 20px;
-            font-size: 0.9rem; transition: all 0.3s;
-        }
-        .lang-switch:hover {
-            background: var(--accent); color: var(--bg-color); border-color: var(--accent);
-        }
-        .center-piece {
-            position: absolute; top: 50%; left: 50%;
-            transform: translate(-50%, -50%); text-align: center;
-            z-index: 10; pointer-events: none; 
-        }
-        h1 {
-            font-size: 3.5rem; font-weight: 700; letter-spacing: -2px;
-            margin: 0; line-height: 0.9; text-transform: uppercase;
-        }
-        .role {
-            font-family: 'Courier New', monospace; font-size: 1.1rem;
-            margin-top: 15px; display: block; opacity: 0.8;
-        }
-        .orbiter {
-            position: absolute; background: transparent; color: var(--text-color);
-            border: 1px solid var(--text-color); padding: 12px 24px;
-            border-radius: 50px; font-size: 1.2rem; text-transform: uppercase;
-            font-weight: 500; cursor: pointer; text-decoration: none;
-            transition: all 0.3s ease; animation: float 6s ease-in-out infinite;
-        }
-        .orbiter:hover {
-            background: var(--accent); color: var(--bg-color); border-color: var(--accent);
-            transform: scale(1.1); z-index: 50;
-        }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        /* Desktop Positions */
-        #btn-writing { top: 20%; left: 20%; animation-delay: 0s; }
-        #btn-research { top: 20%; right: 20%; animation-delay: 1s; }
-        #btn-art { bottom: 20%; left: 20%; animation-delay: 2s; }
-        #btn-about { bottom: 20%; right: 20%; animation-delay: 3s; }
-        #btn-email { bottom: 10%; left: 50%; transform: translateX(-50%); animation-delay: 4s; border-style: dashed; }
-        
-        .modal-overlay {
-            display: none; position: fixed; top: 0; left: 0;
-            width: 100%; height: 100%; background: rgba(0, 34, 255, 0.95);
-            z-index: 200; justify-content: center; align-items: center;
-        }
-        .modal-content {
-            background: transparent; width: 90%; max-width: 600px;
-            text-align: left; position: relative;
-            max-height: 85vh; overflow-y: auto; padding-right: 10px;
-        }
-        .modal-content::-webkit-scrollbar { width: 5px; }
-        .modal-content::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Noto+Sans+Ogham&display=swap" rel="stylesheet">
 
-        .close-btn {
-            position: absolute; top: 0; right: 0;
-            font-size: 2rem; cursor: pointer; color: var(--accent); z-index: 201;
-        }
-        .modal-content h2 {
-            font-size: 2rem; border-bottom: 2px solid var(--accent);
-            padding-bottom: 10px; margin-bottom: 30px; color: var(--accent); text-transform: uppercase;
-            margin-top: 0;
-        }
-        .category-title {
-            color: var(--accent); font-weight: bold; text-transform: uppercase;
-            font-size: 0.9rem; margin-top: 25px; margin-bottom: 10px;
-            font-family: 'Courier New', monospace; border-bottom: 1px dashed rgba(204, 255, 0, 0.3);
-            display: inline-block;
-        }
-        .item-list a {
-            display: block; color: #FFF; text-decoration: none;
-            font-size: 1.3rem; margin-bottom: 15px;
-            border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 5px; transition: color 0.3s;
-        }
-        .item-list a:hover { color: var(--accent); padding-left: 10px; }
-        .meta {
-            display: block; font-size: 0.8rem; opacity: 0.7; font-family: 'Courier New', monospace; margin-top: 3px;
-        }
-        .skills-block {
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            color: #eee;
-        }
-
-
-        @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; }
-            
-        
-            .orbiter { padding: 8px 16px; font-size: 0.9rem; }
-            
-            #btn-writing { top: 15%; left: 5%; }
-            #btn-research { top: 25%; right: 5%; }
-            
-           
-            #btn-art { top: 65%; left: 5%; bottom: auto; }
-            #btn-about { top: 75%; right: 5%; bottom: auto; }
-            
-            #btn-email { bottom: 5%; left: 50%; transform: translateX(-50%); }
-            .modal-content { max-height: 80vh; }
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -145,97 +28,15 @@
     <div class="orbiter" id="btn-about" onclick="openModal('modal-about')">Sobre mí</div>
     <a href="mailto:mirandagarces@gmail.com" class="orbiter" id="btn-email">Escríbeme</a>
 
-    <div id="modal-writing" class="modal-overlay">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal-writing')">&times;</span>
-            <h2>Escritura</h2>
-            <div class="item-list">
-                
-                <div class="category-title">LIBROS</div>
-                <a href="https://cultura.cuenca.gob.ec/noticia/convocatoria-editorial-2025-anuncia-a-sus-ganadores/?doing_wp_cron=1765986439.9229109287261962890625" target="_blank">
-                    El pulso del código 
-                    <span class="meta">Casa Editorial Cuenca, 2026 (Próxima publicación)</span>
-                </a>
-                <a href="https://isbnecuador.com/catalogo.php?mode=detalle&nt=104715" target="_blank">
-                    Kimirina: 25 años de transformación
-                    <span class="meta">Corporación Kimirina, 2025</span>
-                </a>
-
-                <div class="category-title">POESÍA</div>
-                <a href="https://revistas.uasb.edu.ec/index.php/kipus/article/view/4492" target="_blank">
-                    Poemas inéditos 
-                    <span class="meta">Revista Kipus, 2024</span>
-                </a>
-                <a href="https://www.uartes.edu.ec/sitio/download/pdp13_d01_dosier-1-pdf/?wpdmdl=66958&masterkey" target="_blank">
-                    El velo universal 
-                    <span class="meta">Revista Pie de página, 2024</span>
-                </a>
-
-                <div class="category-title">ENSAYOS (SELECCIÓN)</div>
-                <a href="https://milmachetes.com/colapsos-marcados-por-el-simbolo/" target="_blank">
-                    Colapsos marcados por el símbolo 
-                    <span class="meta">Revista Mil Machetes</span>
-                </a>
-                <a href="https://milmachetes.com/la-geometria-invisible-de-los-afectos/" target="_blank">
-                    La geometría invisible de los afectos 
-                    <span class="meta">Revista Mil Machetes</span>
-                </a>
-
-                <div class="category-title">PERIODISMO (SELECCIÓN)</div>
-                <a href="#" style="pointer-events: none;">
-                    La vibración de la ira 
-                    <span class="meta">V Antología Feria del Libro NY, Smol Books, 2025</span>
-                </a>
-                <a href="https://indomita.media/mujeres-migrantes-violencia-ecuador/" target="_blank">
-                    Ser mujer migrante en Ecuador 
-                    <span class="meta">Indómita, 2022 (Periodismo de datos)</span>
-                </a>
-            </div>
+    <div id="art-overlay">
+        <div id="art-close" onclick="closeArt()">[ CERRAR X ]</div>
+        <div id="art-meta">
+            LA ESCRITURA DEL DIOS (2025)<br>
+            Encuentra el vacío.<br>
+            Espera 2 segundos.<br>
+            Mira el Infinito.
         </div>
-    </div>
-
-    <div id="modal-research" class="modal-overlay">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal-research')">&times;</span>
-            <h2>Investigación</h2>
-            <div class="item-list">
-                
-                <a href="#" style="pointer-events: none;">
-                    Machine Error Ontologies
-                    <span class="meta">Glitch art y realismo especulativo</span>
-                </a>
-
-                <a href="https://revistas.usfq.edu.ec/index.php/anima/article/view/3255" target="_blank">
-                    “Si no olvido, no crezco”: trauma en la novela Fiebre de Carnaval
-                    <span class="meta">Revista Ánima, vol. 4, 2024</span>
-                </a>
-
-                <a href="https://repositorio.uasb.edu.ec/handle/10644/10056" target="_blank">
-                    La casa rota
-                    <span class="meta"> Tesis de Maestría </span>
-                </a>
-
-                <a href="#" style="pointer-events: none;">
-                    Catalogación del patrimonio inmaterial de las comunidades indígenas del cantón Guaranda
-                    <span class="meta">Etnografía en Guaranda, Ecuador</span>
-                </a>
-
-                <a href="#" style="pointer-events: none;">
-                    Understanding visual self-representations of people with invisible disabilities in social media 
-                    <span class="meta">Tesis de Maestría, University of Leeds</span>
-                </a>
-
-                <a href="https://repositorio.puce.edu.ec/handle/123456789/32317" target="_blank">
-                    La curaduría de contenidos web y el periodismo
-                    <span class="meta">PUCE, 2013</span>
-                </a>
-
-                <div class="category-title">Habilidades de Investigación</div>
-                <div class="skills-block">
-                    Métodos de literatura comparada / Análisis narratológico / Close reading / Aplicación de teoría decolonial / Herramientas de humanidades digitales / NLP (Python) / Marcos de estudios de trauma / Análisis de semiótica social visual / Trabajo de campo etnográfico / Análisis de contenido 
-                </div>
-            </div>
-        </div>
+        <div id="art-status">ESCANEANDO...</div>
     </div>
 
     <div id="modal-art" class="modal-overlay">
@@ -243,35 +44,16 @@
             <span class="close-btn" onclick="closeModal('modal-art')">&times;</span>
             <h2>Práctica Artística</h2>
             <div class="item-list">
+                <a onclick="launchArt()" class="launch-btn">
+                    &#9654; INICIAR: LA ESCRITURA DEL DIOS
+                    <span class="meta" style="color: inherit;">Bio-Poética Generativa (p5.js)</span>
+                </a>
                 <a href="#">Memory Flux <span class="meta">Bienal Universitaria de Arte Multimedia 2025</span></a>
             </div>
         </div>
     </div>
-
-    <div id="modal-about" class="modal-overlay">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal-about')">&times;</span>
-            <h2>Sobre mí</h2>
-            <p style="font-size: 1.2rem; line-height: 1.6;">
-                <b>¡Hola!</b> Nací en Quito, Ecuador. Soy escritora, investigadora y docente. Escribo ensayo, poesía y código para explorar la relación entre lenguaje, tecnología y memoria. 
-                <br><br>
-                Cuento con maestrías con distinción en New Media (University of Leeds) y Literatura (UASB). Mi escritura ha sido publicada en revistas literarias y antologías. Mi primer libro de ensayos, <i>El pulso del código</i>, será publicado en 2026. 
-                <br><br>
-                Actualmente desarrollo proyectos que integran análisis literario formal con práctica computacional.
-                  <br><br>
-            </p>
-        </div>
-    </div>
-
-    <script>
-        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
-        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-        
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal-overlay')) {
-                event.target.style.display = "none";
-            }
-        }
-    </script>
+    
+    <script src="js/main.js"></script>
+    <script src="js/sketches/gods-script.js"></script>
 </body>
 </html>
