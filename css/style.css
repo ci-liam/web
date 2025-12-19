@@ -56,7 +56,9 @@ h1 {
     border: 1px solid var(--text-color); padding: 12px 24px;
     border-radius: 50px; font-size: 1.2rem; text-transform: uppercase;
     font-weight: 500; cursor: pointer; text-decoration: none;
-    transition: all 0.3s ease; animation: float 6s ease-in-out infinite;
+    transition: all 0.3s ease; 
+    /* La animación se define por defecto, pero se sobrescribe abajo para los centrados */
+    animation: float 6s ease-in-out infinite;
 }
 
 .orbiter:hover {
@@ -64,24 +66,42 @@ h1 {
     transform: scale(1.1); z-index: 50;
 }
 
+/* Animación Estándar (Para botones laterales) */
 @keyframes float {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-15px); }
     100% { transform: translateY(0px); }
 }
 
-/* Posiciones de Botones */
+/* Animación Centrada (Para Email y Workshops) 
+   Mantiene el translateX(-50%) para que no den el salto a la derecha */
+@keyframes float-centered {
+    0% { transform: translateX(-50%) translateY(0px); }
+    50% { transform: translateX(-50%) translateY(-15px); }
+    100% { transform: translateX(-50%) translateY(0px); }
+}
+
+/* Posiciones de Botones Laterales */
 #btn-writing { top: 20%; left: 20%; animation-delay: 0s; }
 #btn-research { top: 20%; right: 20%; animation-delay: 1s; }
 #btn-art { bottom: 20%; left: 20%; animation-delay: 2s; }
 #btn-about { bottom: 20%; right: 20%; animation-delay: 3s; }
-#btn-email { bottom: 10%; left: 50%; transform: translateX(-50%); animation-delay: 4s; border-style: dashed; }
 
-/* NUEVO BOTÓN WORKSHOPS (Arriba Centro) */
+/* Botones Centrales (Usan float-centered para no saltar) */
+#btn-email { 
+    bottom: 10%; 
+    left: 50%; 
+    transform: translateX(-50%); /* Posición inicial */
+    animation: float-centered 6s ease-in-out infinite; /* Animación especial */
+    animation-delay: 4s; 
+    border-style: dashed; 
+}
+
 #btn-workshops { 
     top: 15%; 
     left: 50%; 
-    transform: translateX(-50%); 
+    transform: translateX(-50%); /* Posición inicial */
+    animation: float-centered 6s ease-in-out infinite; /* Animación especial */
     animation-delay: 0.5s; 
 }
 
@@ -168,29 +188,30 @@ h1 {
     pointer-events: none;
 }
 
+
 #art-overlay canvas {
-    /* Negro por defecto */
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="black"/></svg>') 10 10, auto;
 }
 
 .cursor-epiphany {
-    /* Dorado en epifanía */
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="%23FFD700"/></svg>') 10 10, auto !important;
 }
 
-/* Responsive */
+/* Responsive (Móvil) */
 @media (max-width: 768px) {
     h1 { font-size: 2.2rem; }
     .orbiter { padding: 8px 16px; font-size: 0.9rem; }
     
-    #btn-writing { top: 15%; left: 5%; }
-    #btn-research { top: 25%; right: 5%; }
-    #btn-art { top: 65%; left: 5%; bottom: auto; }
-    #btn-about { top: 75%; right: 5%; bottom: auto; }
+    /* Reorganización para evitar superposiciones */
+    #btn-workshops { top: 12%; left: 50%; width: auto; } /* Arriba del todo */
+
+    #btn-writing { top: 20%; left: 5%; }
+    #btn-research { top: 28%; right: 5%; }
     
-    /* Workshops en móvil */
-    #btn-workshops { top: 45%; left: 50%; width: auto; }
+    #btn-art { top: 65%; left: 5%; bottom: auto; }
+    #btn-about { top: 73%; right: 5%; bottom: auto; }
     
     #btn-email { bottom: 5%; left: 50%; transform: translateX(-50%); }
+    
     .modal-content { max-height: 80vh; }
 }
