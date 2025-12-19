@@ -11,14 +11,10 @@ body {
     margin: 0; padding: 0;
     height: 100vh; width: 100vw;
     overflow: hidden; position: relative;
-    /* Cursor por defecto (flecha) en toda la web */
     cursor: auto; 
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
+a { color: inherit; text-decoration: none; }
 
 /* Selector de Idioma */
 .lang-switch {
@@ -29,9 +25,7 @@ a {
     font-size: 0.9rem; transition: all 0.3s;
 }
 
-.lang-switch:hover {
-    background: var(--accent); color: var(--bg-color); border-color: var(--accent);
-}
+.lang-switch:hover { background: var(--accent); color: var(--bg-color); border-color: var(--accent); }
 
 /* Centro */
 .center-piece {
@@ -50,15 +44,16 @@ h1 {
     margin-top: 15px; display: block; opacity: 0.8;
 }
 
-/* Botones Orbitales */
+/* Botones Orbitales (Estilo Base) */
 .orbiter {
-    position: absolute; background: transparent; color: var(--text-color);
+    /* Quitamos position: absolute de aquí para los botones centrales */
+    background: transparent; color: var(--text-color);
     border: 1px solid var(--text-color); padding: 12px 24px;
     border-radius: 50px; font-size: 1.2rem; text-transform: uppercase;
     font-weight: 500; cursor: pointer; text-decoration: none;
     transition: all 0.3s ease; 
-    /* La animación se define por defecto, pero se sobrescribe abajo para los centrados */
     animation: float 6s ease-in-out infinite;
+    white-space: nowrap; /* Evita rupturas de línea */
 }
 
 .orbiter:hover {
@@ -66,46 +61,49 @@ h1 {
     transform: scale(1.1); z-index: 50;
 }
 
-/* Animación Estándar (Para botones laterales) */
+/* Animación de flotación estándar (solo arriba y abajo) */
 @keyframes float {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-15px); }
     100% { transform: translateY(0px); }
 }
 
-/* Animación Centrada (Para Email y Workshops) 
-   Mantiene el translateX(-50%) para que no den el salto a la derecha */
-@keyframes float-centered {
-    0% { transform: translateX(-50%) translateY(0px); }
-    50% { transform: translateX(-50%) translateY(-15px); }
-    100% { transform: translateX(-50%) translateY(0px); }
+/* --- POSICIONAMIENTO LATERAL (Absolute) --- */
+#btn-writing, #btn-research, #btn-art, #btn-about {
+    position: absolute;
 }
-
-/* Posiciones de Botones Laterales */
 #btn-writing { top: 20%; left: 20%; animation-delay: 0s; }
 #btn-research { top: 20%; right: 20%; animation-delay: 1s; }
 #btn-art { bottom: 20%; left: 20%; animation-delay: 2s; }
 #btn-about { bottom: 20%; right: 20%; animation-delay: 3s; }
 
-/* Botones Centrales (Usan float-centered para no saltar) */
-#btn-email { 
-    bottom: 10%; 
-    left: 50%; 
-    transform: translateX(-50%); /* Posición inicial */
-    animation: float-centered 6s ease-in-out infinite; /* Animación especial */
-    animation-delay: 4s; 
-    border-style: dashed; 
+
+/* --- SOLUCIÓN AL "SALTO": CONTENEDORES CENTRALES --- */
+/* Este contenedor invisible se encarga ÚNICAMENTE del centrado horizontal */
+.center-wrapper {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
 }
 
-#btn-workshops { 
-    top: 15%; 
-    left: 50%; 
-    transform: translateX(-50%); /* Posición inicial */
-    animation: float-centered 6s ease-in-out infinite; /* Animación especial */
-    animation-delay: 0.5s; 
+/* Posiciones verticales de los contenedores */
+#wrap-workshops { top: 15%; }
+#wrap-email { bottom: 10%; }
+
+/* Estilos específicos para los botones dentro de los contenedores */
+#btn-workshops, #btn-email {
+    position: relative; /* Importante: relative al contenedor */
+    animation-delay: 0.5s;
 }
 
-/* Modales */
+#btn-email {
+    border-style: dashed;
+    animation-delay: 4s;
+}
+
+
+/* --- Modales y Resto del CSS (Sin cambios mayores) --- */
 .modal-overlay {
     display: none; position: fixed; top: 0; left: 0;
     width: 100%; height: 100%; background: rgba(0, 34, 255, 0.95);
@@ -159,7 +157,7 @@ h1 {
 /* ARTE OVERLAY */
 #art-overlay {
     position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-    background: #B46400; /* Fondo Jaguar */
+    background: #B46400; 
     z-index: 9999; display: none;
 }
 
@@ -183,12 +181,9 @@ h1 {
 
 #art-close:hover { background: white; color: black; }
 
-.fade-out {
-    opacity: 0 !important;
-    pointer-events: none;
-}
+.fade-out { opacity: 0 !important; pointer-events: none; }
 
-
+/* CURSORES DEL SCRIPT DE ARTE */
 #art-overlay canvas {
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="black"/></svg>') 10 10, auto;
 }
@@ -197,21 +192,22 @@ h1 {
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="%23FFD700"/></svg>') 10 10, auto !important;
 }
 
-/* Responsive (Móvil) */
+/* --- RESPONSIVE (MÓVIL) --- */
 @media (max-width: 768px) {
     h1 { font-size: 2.2rem; }
     .orbiter { padding: 8px 16px; font-size: 0.9rem; }
     
-    /* Reorganización para evitar superposiciones */
-    #btn-workshops { top: 12%; left: 50%; width: auto; } /* Arriba del todo */
+    /* SOLUCIÓN SUPERPOSICIÓN MÓVIL */
+    /* Movemos el contenedor de Workshops mucho más abajo */
+    #wrap-workshops { top: 42%; } 
 
     #btn-writing { top: 20%; left: 5%; }
     #btn-research { top: 28%; right: 5%; }
-    
     #btn-art { top: 65%; left: 5%; bottom: auto; }
     #btn-about { top: 73%; right: 5%; bottom: auto; }
     
-    #btn-email { bottom: 5%; left: 50%; transform: translateX(-50%); }
+    /* Email se mantiene abajo */
+    #wrap-email { bottom: 5%; }
     
     .modal-content { max-height: 80vh; }
 }
