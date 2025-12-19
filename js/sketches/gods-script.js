@@ -10,23 +10,9 @@ let wheelWords = [];
 function setup() {
     cnv = createCanvas(windowWidth, windowHeight);
     cnv.parent('art-overlay');
-    cnv.id('gods-canvas');
-
-    let css = `
-        #gods-canvas {
-            cursor: default;
-        }
-        #gods-canvas.cursor-normal {
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="black"/></svg>') 10 10, auto !important;
-        }
-        #gods-canvas.cursor-epiphany {
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="%23FFD700"/></svg>') 10 10, auto !important;
-        }
-    `;
-    let style = createElement('style', css);
-    style.parent(document.head);
-
-    cnv.addClass('cursor-normal');
+    
+    // No necesitamos inyectar CSS aquí, ya está en el style.css
+    // El cursor negro se aplica automáticamente gracias a la regla CSS: #art-overlay canvas
 
     if (windowWidth < 768) {
         pixelDensity(1);
@@ -70,12 +56,11 @@ function draw() {
         epiphanyLevel = lerp(epiphanyLevel, 0, 0.1);
     }
 
+    // Cambio a cursor dorado (Epifanía)
     if (epiphanyLevel > 0.1) {
-        cnv.removeClass('cursor-normal');
         cnv.addClass('cursor-epiphany');
     } else {
         cnv.removeClass('cursor-epiphany');
-        cnv.addClass('cursor-normal');
     }
 
     if (epiphanyLevel < 0.99) drawSkin(1 - epiphanyLevel, isMobile);
