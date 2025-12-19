@@ -2,14 +2,30 @@ let t = 0;
 let lastMouseMoveTime = 0;
 let isHoveringVoid = false;
 let epiphanyLevel = 0; 
+let cnv; 
 
 let skinWords = ["TZINACAN", "QAHOLOM", "JAGUAR", "DIOS", "::", "//", "||"];
 let wheelWords = []; 
 
 function setup() {
-    let cnv = createCanvas(windowWidth, windowHeight);
+    cnv = createCanvas(windowWidth, windowHeight);
     cnv.parent('art-overlay');
     
+
+    let css = `
+        /* Cursor por defecto: Círculo Negro */
+        canvas {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="black"/></svg>') 10 10, auto !important;
+        }
+        /* Cursor Epifanía: Círculo Dorado/Luz */
+        .cursor-epiphany {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="%23FFD700"/></svg>') 10 10, auto !important;
+        }
+    `;
+    let style = createElement('style', css);
+    style.parent(document.head);
+    // --------------------------------------------------
+
     if (windowWidth < 768) {
         pixelDensity(1);
     }
@@ -49,11 +65,22 @@ function draw() {
 
     let waitTime = isMobile ? 1500 : 2000;
 
+    // Cálculo del nivel de epifanía
     if (isHoveringVoid && timeStill > waitTime && inSacredZone && mouseInside) {
         epiphanyLevel = lerp(epiphanyLevel, 1, 0.05);
     } else {
         epiphanyLevel = lerp(epiphanyLevel, 0, 0.1);
     }
+
+    // --- LÓGICA DE CAMBIO DE CURSOR ---
+    if (epiphanyLevel > 0.1) {
+        // Si estamos entrando en la epifanía, cambiamos al cursor de luz
+        cnv.addClass('cursor-epiphany');
+    } else {
+        // Si no, volvemos al cursor negro por defecto
+        cnv.removeClass('cursor-epiphany');
+    }
+    // ----------------------------------
 
     if (epiphanyLevel < 0.99) drawSkin(1 - epiphanyLevel, isMobile); 
     if (epiphanyLevel > 0.01) drawWheel(epiphanyLevel, isMobile); 
@@ -114,7 +141,7 @@ function drawWheel(opacityFactor, isMobile) {
             let colNoise = noise(x * 0.01, y * 0.01, t);
             let rVal = 255;
             let gVal = map(colNoise, 0, 1, 255, 200); 
-            let bVal = map(colNoise, 0, 1, 255, 0);   
+            let bVal = map(colNoise, 0, 1, 255, 0);    
             
             fill(rVal, gVal, bVal, 255 * opacityFactor);
             textSize(12);
