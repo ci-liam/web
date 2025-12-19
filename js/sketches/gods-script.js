@@ -11,12 +11,10 @@ function setup() {
     cnv = createCanvas(windowWidth, windowHeight);
     cnv.parent('art-overlay');
     
-    // --- 1. ASIGNAMOS UN ID ÚNICO AL CANVAS ---
-    // Esto asegura que los estilos solo apliquen a este dibujo y no al resto de la web.
+
     cnv.id('gods-canvas'); 
     
-    // --- 2. INYECCIÓN DE ESTILOS ESPECÍFICOS ---
-    // Apuntamos específicamente a #gods-canvas
+
     let css = `
         /* Estado Normal: Círculo Negro */
         #gods-canvas.cursor-normal {
@@ -51,8 +49,7 @@ function setup() {
         wheelWords.push("INFINITO");
     }
     
-    // IMPORTANTE: Si usas noLoop(), asegúrate de que tu main.js llame a loop() al abrir el modal.
-    // De lo contrario, la animación (y el cambio de cursor) no funcionará.
+
     noLoop(); 
 }
 
