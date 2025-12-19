@@ -2,7 +2,7 @@ let t = 0;
 let lastMouseMoveTime = 0;
 let isHoveringVoid = false;
 let epiphanyLevel = 0; 
-let cnv; // Variable global para el canvas
+let cnv; 
 
 let skinWords = ["TZINACAN", "QAHOLOM", "JAGUAR", "DIOS", "::", "//", "||"];
 let wheelWords = []; 
@@ -11,21 +11,28 @@ function setup() {
     cnv = createCanvas(windowWidth, windowHeight);
     cnv.parent('art-overlay');
     
-
+    // --- 1. ASIGNAMOS UN ID ÚNICO AL CANVAS ---
+    // Esto asegura que los estilos solo apliquen a este dibujo y no al resto de la web.
+    cnv.id('gods-canvas'); 
+    
+    // --- 2. INYECCIÓN DE ESTILOS ESPECÍFICOS ---
+    // Apuntamos específicamente a #gods-canvas
     let css = `
-        .cursor-normal {
+        /* Estado Normal: Círculo Negro */
+        #gods-canvas.cursor-normal {
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="black"/></svg>') 10 10, auto !important;
         }
-        .cursor-epiphany {
+        
+        /* Estado Epifanía: Círculo Dorado (#FFD700) */
+        #gods-canvas.cursor-epiphany {
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="%23FFD700"/></svg>') 10 10, auto !important;
         }
     `;
     let style = createElement('style', css);
     style.parent(document.head);
     
-    // Asignamos el cursor negro por defecto al iniciar
+    // Asignamos la clase normal por defecto
     cnv.addClass('cursor-normal');
-    // -------------------------------------
 
     if (windowWidth < 768) {
         pixelDensity(1);
@@ -44,6 +51,8 @@ function setup() {
         wheelWords.push("INFINITO");
     }
     
+    // IMPORTANTE: Si usas noLoop(), asegúrate de que tu main.js llame a loop() al abrir el modal.
+    // De lo contrario, la animación (y el cambio de cursor) no funcionará.
     noLoop(); 
 }
 
@@ -73,17 +82,18 @@ function draw() {
         epiphanyLevel = lerp(epiphanyLevel, 0, 0.1);
     }
 
-    // --- CAMBIO DE CURSOR DINÁMICO ---
-    // Si la epifanía empieza a ser visible (> 0.1), cambiamos a dorado
+    // --- 3. LÓGICA DE CAMBIO DE CURSOR ---
+    // Solo cambiamos la clase si estamos dentro del nivel de epifanía
     if (epiphanyLevel > 0.1) {
+        // Al entrar en la epifanía -> Dorado
         cnv.removeClass('cursor-normal');
         cnv.addClass('cursor-epiphany');
     } else {
-        // Si no, aseguramos que sea negro
+        // Al salir o estar normal -> Negro
         cnv.removeClass('cursor-epiphany');
         cnv.addClass('cursor-normal');
     }
-    // ---------------------------------
+    // -------------------------------------
 
     if (epiphanyLevel < 0.99) drawSkin(1 - epiphanyLevel, isMobile); 
     if (epiphanyLevel > 0.01) drawWheel(epiphanyLevel, isMobile); 
