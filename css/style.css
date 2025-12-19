@@ -1,9 +1,9 @@
-/* css/style.css */
 :root {
     --bg-color: #0022FF; 
     --text-color: #FFFFFF;
     --accent: #CCFF00; 
 }
+
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
@@ -13,7 +13,6 @@ body {
     overflow: hidden; position: relative;
 }
 
-/* --- ELEMENTOS DEL SITIO --- */
 .lang-switch {
     position: fixed; top: 20px; right: 20px;
     color: var(--text-color); text-decoration: none;
@@ -21,22 +20,27 @@ body {
     padding: 5px 10px; z-index: 100; border-radius: 20px;
     font-size: 0.9rem; transition: all 0.3s;
 }
+
 .lang-switch:hover {
     background: var(--accent); color: var(--bg-color); border-color: var(--accent);
 }
+
 .center-piece {
     position: absolute; top: 50%; left: 50%;
     transform: translate(-50%, -50%); text-align: center;
     z-index: 10; pointer-events: none; 
 }
+
 h1 {
     font-size: 3.5rem; font-weight: 700; letter-spacing: -2px;
     margin: 0; line-height: 0.9; text-transform: uppercase;
 }
+
 .role {
     font-family: 'Courier New', monospace; font-size: 1.1rem;
     margin-top: 15px; display: block; opacity: 0.8;
 }
+
 .orbiter {
     position: absolute; background: transparent; color: var(--text-color);
     border: 1px solid var(--text-color); padding: 12px 24px;
@@ -44,34 +48,36 @@ h1 {
     font-weight: 500; cursor: pointer; text-decoration: none;
     transition: all 0.3s ease; animation: float 6s ease-in-out infinite;
 }
+
 .orbiter:hover {
     background: var(--accent); color: var(--bg-color); border-color: var(--accent);
     transform: scale(1.1); z-index: 50;
 }
+
 @keyframes float {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-15px); }
     100% { transform: translateY(0px); }
 }
 
-/* Posiciones Desktop */
 #btn-writing { top: 20%; left: 20%; animation-delay: 0s; }
 #btn-research { top: 20%; right: 20%; animation-delay: 1s; }
 #btn-art { bottom: 20%; left: 20%; animation-delay: 2s; }
 #btn-about { bottom: 20%; right: 20%; animation-delay: 3s; }
 #btn-email { bottom: 10%; left: 50%; transform: translateX(-50%); animation-delay: 4s; border-style: dashed; }
 
-/* --- MODALES --- */
 .modal-overlay {
     display: none; position: fixed; top: 0; left: 0;
     width: 100%; height: 100%; background: rgba(0, 34, 255, 0.95);
     z-index: 200; justify-content: center; align-items: center;
 }
+
 .modal-content {
     background: transparent; width: 90%; max-width: 600px;
     text-align: left; position: relative;
     max-height: 85vh; overflow-y: auto; padding-right: 10px;
 }
+
 .modal-content::-webkit-scrollbar { width: 5px; }
 .modal-content::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
 
@@ -79,32 +85,37 @@ h1 {
     position: absolute; top: 0; right: 0;
     font-size: 2rem; cursor: pointer; color: var(--accent); z-index: 201;
 }
+
 .modal-content h2 {
     font-size: 2rem; border-bottom: 2px solid var(--accent);
     padding-bottom: 10px; margin-bottom: 30px; color: var(--accent); text-transform: uppercase;
     margin-top: 0;
 }
+
 .category-title {
     color: var(--accent); font-weight: bold; text-transform: uppercase;
     font-size: 0.9rem; margin-top: 25px; margin-bottom: 10px;
     font-family: 'Courier New', monospace; border-bottom: 1px dashed rgba(204, 255, 0, 0.3);
     display: inline-block;
 }
+
 .item-list a {
     display: block; color: #FFF; text-decoration: none;
     font-size: 1.3rem; margin-bottom: 15px;
     border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 5px; transition: color 0.3s;
 }
+
 .item-list a:hover { color: var(--accent); padding-left: 10px; }
+
 .meta {
     display: block; font-size: 0.8rem; opacity: 0.7; font-family: 'Courier New', monospace; margin-top: 3px;
 }
+
 .skills-block {
     font-family: 'Courier New', monospace; font-size: 0.9rem;
     line-height: 1.6; color: #eee;
 }
 
-/* --- ARTE OVERLAY (P5.JS) --- */
 #art-overlay {
     position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
     background: #0022FF; z-index: 9999; display: none;
@@ -112,22 +123,20 @@ h1 {
 
 #art-meta {
     position: absolute; bottom: 30px; left: 30px; color: white;
-    font-family: 'Courier Prime', Courier, monospace; font-size: 12px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 12px;
     line-height: 1.4; pointer-events: none; opacity: 0.8; z-index: 10000;
 }
-#art-status {
-    position: absolute; top: 20px; right: 120px; 
-    font-family: 'Courier Prime', monospace; font-size: 10px; 
-    pointer-events: none; transition: color 0.5s; color: rgba(255,255,255,0.3);
-    z-index: 10000;
-}
+
 #art-close {
     position: absolute; top: 20px; right: 20px;
-    font-family: 'Courier Prime', monospace; font-size: 14px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
     color: white; border: 1px solid white; padding: 5px 10px;
     cursor: pointer; z-index: 10001; text-transform: uppercase;
     background: rgba(0,0,255,0.8);
 }
+
 #art-close:hover { background: white; color: blue; }
 
 @media (max-width: 768px) {
