@@ -1,14 +1,9 @@
-
 let t = 0; 
 let lastMouseMoveTime = 0;
 let isHoveringVoid = false;
 let epiphanyLevel = 0; 
 
-// VOCABULARIO (PIEL)
-// Las palabras que forman las "manchas"
 let skinWords = ["TZINACAN", "QAHOLOM", "JAGUAR", "DIOS", "::", "//", "||"];
-
-// VOCABULARIO (RUEDA)
 let wheelWords = []; 
 
 function setup() {
@@ -19,7 +14,6 @@ function setup() {
     textAlign(CENTER, CENTER);
     noStroke();
 
-    // Generar el caos del infinito
     let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     for(let i=0; i<100; i++) {
         let r = floor(random(alphabet.length));
@@ -29,27 +23,25 @@ function setup() {
         wheelWords.push("INFINITO");
     }
     
-    noLoop(); // Inicia pausado
+    noLoop(); 
 }
 
 function draw() {
-    // --- FONDO RADICAL: JAGUAR / TIERRA ---
-    // Un ámbar dorado profundo. RGB: (180, 110, 0)
-    // Usamos transparencia (50) para dejar la estela de movimiento
-    
     if (epiphanyLevel > 0.1) {
-        // Durante la epifanía, el fondo se oscurece un poco para que brille la rueda
         background(160, 90, 0, 100); 
     } else {
-        // Fondo normal: Piel dorada
         background(180, 100, 0, 50);  
     }
 
     let timeStill = millis() - lastMouseMoveTime;
     
-    // Eliminamos todo el código de statusDiv (texto de instrucciones)
-    // Solo lógica interna:
-    if (isHoveringVoid && timeStill > 2000) {
+    let mouseInside = (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height);
+    
+    let dToCenter = dist(mouseX, mouseY, width/2, height/2);
+    let sacredZoneRadius = min(width, height) * 0.25; 
+    let inSacredZone = dToCenter < sacredZoneRadius;
+
+    if (isHoveringVoid && timeStill > 2000 && inSacredZone && mouseInside) {
         epiphanyLevel = lerp(epiphanyLevel, 1, 0.05);
     } else {
         epiphanyLevel = lerp(epiphanyLevel, 0, 0.1);
@@ -62,17 +54,14 @@ function draw() {
 }
 
 function drawSkin(opacityFactor) {
-    // --- CAMBIO DE COLOR DE PIEL ---
-    // Las letras ahora son NEGRAS/CAFÉ OSCURO para parecer manchas
-    // (20, 10, 0) es un café casi negro
     fill(20, 10, 0, 255 * opacityFactor); 
 
     let scale = 0.002; 
     let step = 25; 
     let cols = width / step;
     let rows = height / step;
-    let mouseNoise = noise(mouseX * scale, mouseY * scale, t);
     
+    let mouseNoise = noise(mouseX * scale, mouseY * scale, t);
     isHoveringVoid = !(mouseNoise > 0.4 && mouseNoise < 0.6);
 
     for (let i = 0; i < cols; i++) {
@@ -85,8 +74,7 @@ function drawSkin(opacityFactor) {
                 let index = floor(map(noiseVal, 0.4, 0.6, 0, skinWords.length));
                 let word = skinWords[index];
                 
-                // Variación de tamaño orgánica
-                let size = map(noiseVal, 0.4, 0.6, 10, 28); // Un poco más grandes
+                let size = map(noiseVal, 0.4, 0.6, 10, 28); 
                 textSize(size);
                 text(word.charAt(0), x, y); 
             }
@@ -111,8 +99,6 @@ function drawWheel(opacityFactor) {
             let x = radius * cos(angle);
             let y = radius * sin(angle);
             
-            // --- COLORES DE LA RUEDA (FUEGO) ---
-            // Blanco brillante y Amarillo para contrastar con el fondo oscuro
             let colNoise = noise(x * 0.01, y * 0.01, t);
             let rVal = 255;
             let gVal = map(colNoise, 0, 1, 255, 200); 
