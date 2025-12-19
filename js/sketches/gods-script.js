@@ -2,7 +2,7 @@ let t = 0;
 let lastMouseMoveTime = 0;
 let isHoveringVoid = false;
 let epiphanyLevel = 0; 
-let cnv; 
+let cnv; // Variable global para el canvas
 
 let skinWords = ["TZINACAN", "QAHOLOM", "JAGUAR", "DIOS", "::", "//", "||"];
 let wheelWords = []; 
@@ -13,18 +13,19 @@ function setup() {
     
 
     let css = `
-        /* Cursor por defecto: Círculo Negro */
-        canvas {
+        .cursor-normal {
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="black"/></svg>') 10 10, auto !important;
         }
-        /* Cursor Epifanía: Círculo Dorado/Luz */
         .cursor-epiphany {
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="%23FFD700"/></svg>') 10 10, auto !important;
         }
     `;
     let style = createElement('style', css);
     style.parent(document.head);
-    // --------------------------------------------------
+    
+    // Asignamos el cursor negro por defecto al iniciar
+    cnv.addClass('cursor-normal');
+    // -------------------------------------
 
     if (windowWidth < 768) {
         pixelDensity(1);
@@ -65,22 +66,24 @@ function draw() {
 
     let waitTime = isMobile ? 1500 : 2000;
 
-    // Cálculo del nivel de epifanía
+    // Lógica de detección de Epifanía
     if (isHoveringVoid && timeStill > waitTime && inSacredZone && mouseInside) {
         epiphanyLevel = lerp(epiphanyLevel, 1, 0.05);
     } else {
         epiphanyLevel = lerp(epiphanyLevel, 0, 0.1);
     }
 
-    // --- LÓGICA DE CAMBIO DE CURSOR ---
+    // --- CAMBIO DE CURSOR DINÁMICO ---
+    // Si la epifanía empieza a ser visible (> 0.1), cambiamos a dorado
     if (epiphanyLevel > 0.1) {
-        // Si estamos entrando en la epifanía, cambiamos al cursor de luz
+        cnv.removeClass('cursor-normal');
         cnv.addClass('cursor-epiphany');
     } else {
-        // Si no, volvemos al cursor negro por defecto
+        // Si no, aseguramos que sea negro
         cnv.removeClass('cursor-epiphany');
+        cnv.addClass('cursor-normal');
     }
-    // ----------------------------------
+    // ---------------------------------
 
     if (epiphanyLevel < 0.99) drawSkin(1 - epiphanyLevel, isMobile); 
     if (epiphanyLevel > 0.01) drawWheel(epiphanyLevel, isMobile); 
