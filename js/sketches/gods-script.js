@@ -1,112 +1,98 @@
-let t = 0; 
+let t = 0;
 let lastMouseMoveTime = 0;
 let isHoveringVoid = false;
-let epiphanyLevel = 0; 
-let cnv; 
+let epiphanyLevel = 0;
+let cnv;
 
 let skinWords = ["TZINACAN", "QAHOLOM", "JAGUAR", "DIOS", "::", "//", "||"];
-let wheelWords = []; 
+let wheelWords = [];
 
 function setup() {
     cnv = createCanvas(windowWidth, windowHeight);
     cnv.parent('art-overlay');
-    
-
-    cnv.id('gods-canvas'); 
-    
+    cnv.id('gods-canvas');
 
     let css = `
-        /* Estado Normal: Círculo Negro */
+        #gods-canvas {
+            cursor: default;
+        }
         #gods-canvas.cursor-normal {
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="black"/></svg>') 10 10, auto !important;
         }
-        
-        /* Estado Epifanía: Círculo Dorado (#FFD700) */
         #gods-canvas.cursor-epiphany {
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="%23FFD700"/></svg>') 10 10, auto !important;
         }
     `;
     let style = createElement('style', css);
     style.parent(document.head);
-    
-    // Asignamos la clase normal por defecto
+
     cnv.addClass('cursor-normal');
 
     if (windowWidth < 768) {
         pixelDensity(1);
     }
-    
+
     textFont('Courier Prime');
     textAlign(CENTER, CENTER);
     noStroke();
 
     let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    for(let i=0; i<100; i++) {
+    for (let i = 0; i < 100; i++) {
         let r = floor(random(alphabet.length));
         wheelWords.push(alphabet.charAt(r));
     }
-    for(let i=0; i<8; i++) {
+    for (let i = 0; i < 8; i++) {
         wheelWords.push("INFINITO");
     }
-    
 
-    noLoop(); 
+    noLoop();
 }
 
 function draw() {
     let isMobile = windowWidth < 768;
 
     if (epiphanyLevel > 0.1) {
-        background(160, 90, 0, 100); 
+        background(160, 90, 0, 100);
     } else {
-        background(180, 100, 0, 50);  
+        background(180, 100, 0, 50);
     }
 
     let timeStill = millis() - lastMouseMoveTime;
-    
     let mouseInside = (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height);
-    
-    let dToCenter = dist(mouseX, mouseY, width/2, height/2);
-    let sacredZoneRadius = min(width, height) * 0.25; 
+    let dToCenter = dist(mouseX, mouseY, width / 2, height / 2);
+    let sacredZoneRadius = min(width, height) * 0.25;
     let inSacredZone = dToCenter < sacredZoneRadius;
-
     let waitTime = isMobile ? 1500 : 2000;
 
-    // Lógica de detección de Epifanía
     if (isHoveringVoid && timeStill > waitTime && inSacredZone && mouseInside) {
         epiphanyLevel = lerp(epiphanyLevel, 1, 0.05);
     } else {
         epiphanyLevel = lerp(epiphanyLevel, 0, 0.1);
     }
 
-    // --- 3. LÓGICA DE CAMBIO DE CURSOR ---
-    // Solo cambiamos la clase si estamos dentro del nivel de epifanía
     if (epiphanyLevel > 0.1) {
-        // Al entrar en la epifanía -> Dorado
         cnv.removeClass('cursor-normal');
         cnv.addClass('cursor-epiphany');
     } else {
-        // Al salir o estar normal -> Negro
         cnv.removeClass('cursor-epiphany');
         cnv.addClass('cursor-normal');
     }
-    // -------------------------------------
 
-    if (epiphanyLevel < 0.99) drawSkin(1 - epiphanyLevel, isMobile); 
-    if (epiphanyLevel > 0.01) drawWheel(epiphanyLevel, isMobile); 
+    if (epiphanyLevel < 0.99) drawSkin(1 - epiphanyLevel, isMobile);
+    if (epiphanyLevel > 0.01) drawWheel(epiphanyLevel, isMobile);
 
     t += isMobile ? 0.006 : 0.004;
 }
 
 function drawSkin(opacityFactor, isMobile) {
-    fill(20, 10, 0, 255 * opacityFactor); 
+    fill(20, 10, 0, 255 * opacityFactor);
 
-    let scale = isMobile ? 0.006 : 0.002; 
-    let step = isMobile ? 35 : 25; 
-    
+    let scale = isMobile ? 0.006 : 0.002;
+    let step = isMobile ? 35 : 25;
+
     let cols = width / step;
     let rows = height / step;
-    
+
     let mouseNoise = noise(mouseX * scale, mouseY * scale, t);
     isHoveringVoid = !(mouseNoise > 0.4 && mouseNoise < 0.6);
 
@@ -119,11 +105,11 @@ function drawSkin(opacityFactor, isMobile) {
             if (noiseVal > 0.4 && noiseVal < 0.6) {
                 let index = floor(map(noiseVal, 0.4, 0.6, 0, skinWords.length));
                 let word = skinWords[index];
-                
+
                 let maxSize = isMobile ? 32 : 28;
-                let size = map(noiseVal, 0.4, 0.6, 10, maxSize); 
+                let size = map(noiseVal, 0.4, 0.6, 10, maxSize);
                 textSize(size);
-                text(word.charAt(0), x, y); 
+                text(word.charAt(0), x, y);
             }
         }
     }
@@ -131,43 +117,45 @@ function drawSkin(opacityFactor, isMobile) {
 
 function drawWheel(opacityFactor, isMobile) {
     push();
-    translate(width/2, height/2);
-    
-    let rings = isMobile ? 12 : 20; 
-    let maxRadius = dist(0,0,width,height) * 0.7; 
+    translate(width / 2, height / 2);
+
+    let rings = isMobile ? 12 : 20;
+    let maxRadius = dist(0, 0, width, height) * 0.7;
 
     for (let r = 1; r < rings; r++) {
         let radius = map(r, 0, rings, 50, maxRadius);
-        let items = r * (isMobile ? 5 : 8); 
-        
+        let items = r * (isMobile ? 5 : 8);
+
         let dir = (r % 2 == 0) ? 1 : -1;
-        let rotation = t * dir * 0.2; 
+        let rotation = t * dir * 0.2;
 
         for (let i = 0; i < items; i++) {
             let angle = map(i, 0, items, 0, TWO_PI) + rotation;
             let x = radius * cos(angle);
             let y = radius * sin(angle);
-            
+
             let colNoise = noise(x * 0.01, y * 0.01, t);
             let rVal = 255;
-            let gVal = map(colNoise, 0, 1, 255, 200); 
-            let bVal = map(colNoise, 0, 1, 255, 0);    
-            
+            let gVal = map(colNoise, 0, 1, 255, 200);
+            let bVal = map(colNoise, 0, 1, 255, 0);
+
             fill(rVal, gVal, bVal, 255 * opacityFactor);
             textSize(12);
             push();
             translate(x, y);
-            rotate(angle + PI/2);
-            
+            rotate(angle + PI / 2);
+
             let noiseScaleForWords = isMobile ? 200 : 100;
-            let noiseIndex = noise(i * noiseScaleForWords, r * noiseScaleForWords); 
+            let noiseIndex = noise(i * noiseScaleForWords, r * noiseScaleForWords);
             let wordIndex = floor(map(noiseIndex, 0, 1, 0, wheelWords.length));
             let word = wheelWords[wordIndex];
-            
+
             if (word === "INFINITO") {
-                textStyle(BOLD); textSize(14);
+                textStyle(BOLD);
+                textSize(14);
             } else {
-                textStyle(NORMAL); textSize(12);
+                textStyle(NORMAL);
+                textSize(12);
             }
             text(word, 0, 0);
             pop();
@@ -176,6 +164,15 @@ function drawWheel(opacityFactor, isMobile) {
     pop();
 }
 
-function mouseMoved() { lastMouseMoveTime = millis(); }
-function touchMoved() { lastMouseMoveTime = millis(); return false; }
-function windowResized() { resizeCanvas(windowWidth, windowHeight); }
+function mouseMoved() {
+    lastMouseMoveTime = millis();
+}
+
+function touchMoved() {
+    lastMouseMoveTime = millis();
+    return false;
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+}
