@@ -3,6 +3,7 @@ let lastMouseMoveTime = 0;
 let isHoveringVoid = false;
 let epiphanyLevel = 0;
 let cnv;
+let isEpiphanyActive = false;
 
 let skinWords = ["TZINACAN", "QAHOLOM", "JAGUAR", "DIOS", "::", "//", "||"];
 let wheelWords = [];
@@ -11,9 +12,6 @@ function setup() {
     cnv = createCanvas(windowWidth, windowHeight);
     cnv.parent('art-overlay');
     
-    // No necesitamos inyectar CSS aquí, ya está en el style.css
-    // El cursor negro se aplica automáticamente gracias a la regla CSS: #art-overlay canvas
-
     if (windowWidth < 768) {
         pixelDensity(1);
     }
@@ -56,11 +54,12 @@ function draw() {
         epiphanyLevel = lerp(epiphanyLevel, 0, 0.1);
     }
 
-    // Cambio a cursor dorado (Epifanía)
-    if (epiphanyLevel > 0.1) {
+    if (epiphanyLevel > 0.1 && !isEpiphanyActive) {
         cnv.addClass('cursor-epiphany');
-    } else {
+        isEpiphanyActive = true;
+    } else if (epiphanyLevel <= 0.1 && isEpiphanyActive) {
         cnv.removeClass('cursor-epiphany');
+        isEpiphanyActive = false;
     }
 
     if (epiphanyLevel < 0.99) drawSkin(1 - epiphanyLevel, isMobile);
