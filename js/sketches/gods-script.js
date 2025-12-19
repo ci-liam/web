@@ -27,7 +27,9 @@ function setup() {
 }
 
 function draw() {
-    // FONDO JAGUAR (ÁMBAR/TIERRA)
+    // Detectar si es móvil para ajustar la experiencia
+    let isMobile = windowWidth < 768;
+
     if (epiphanyLevel > 0.1) {
         background(160, 90, 0, 100); 
     } else {
@@ -35,9 +37,9 @@ function draw() {
     }
 
     let timeStill = millis() - lastMouseMoveTime;
+    
     let mouseInside = (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height);
     
-    // ZONA SAGRADA (CENTRO)
     let dToCenter = dist(mouseX, mouseY, width/2, height/2);
     let sacredZoneRadius = min(width, height) * 0.25; 
     let inSacredZone = dToCenter < sacredZoneRadius;
@@ -48,17 +50,24 @@ function draw() {
         epiphanyLevel = lerp(epiphanyLevel, 0, 0.1);
     }
 
-    if (epiphanyLevel < 0.99) drawSkin(1 - epiphanyLevel); 
-    if (epiphanyLevel > 0.01) drawWheel(epiphanyLevel); 
+    // Pasamos la variable 'isMobile' a las funciones de dibujo
+    if (epiphanyLevel < 0.99) drawSkin(1 - epiphanyLevel, isMobile); 
+    if (epiphanyLevel > 0.01) drawWheel(epiphanyLevel, isMobile); 
 
-    t += 0.004;
+    // AJUSTE DE VELOCIDAD:
+    // En móvil va más rápido (0.006) para que se note el movimiento
+    // En escritorio mantiene el ritmo hipnótico lento (0.004)
+    t += isMobile ? 0.006 : 0.004;
 }
 
-function drawSkin(opacityFactor) {
-    // TEXTO NEGRO/CAFÉ (MANCHAS)
+function drawSkin(opacityFactor, isMobile) {
     fill(20, 10, 0, 255 * opacityFactor); 
 
-    let scale = 0.002; 
+    // AJUSTE DE ESCALA (EL "ZOOM"):
+    // En móvil usamos 0.006 (Zoom Out) para ver más manchas en menos espacio.
+    // En escritorio usamos 0.002 (Zoom In) para ver detalles grandes.
+    let scale = isMobile ? 0.006 : 0.002; 
+    
     let step = 25; 
     let cols = width / step;
     let rows = height / step;
@@ -84,7 +93,7 @@ function drawSkin(opacityFactor) {
     }
 }
 
-function drawWheel(opacityFactor) {
+function drawWheel(opacityFactor, isMobile) {
     push();
     translate(width/2, height/2);
     let rings = 20; 
@@ -92,7 +101,8 @@ function drawWheel(opacityFactor) {
 
     for (let r = 1; r < rings; r++) {
         let radius = map(r, 0, rings, 50, maxRadius);
-        let items = r * 8; 
+        // Menos palabras en móvil para no saturar
+        let items = r * (isMobile ? 5 : 8); 
         let dir = (r % 2 == 0) ? 1 : -1;
         let rotation = t * dir * 0.2; 
 
@@ -112,7 +122,9 @@ function drawWheel(opacityFactor) {
             translate(x, y);
             rotate(angle + PI/2);
             
-            let noiseIndex = noise(i * 100, r * 100); 
+            // Usamos un factor diferente para el ruido en móvil para variedad
+            let noiseScaleForWords = isMobile ? 200 : 100;
+            let noiseIndex = noise(i * noiseScaleForWords, r * noiseScaleForWords); 
             let wordIndex = floor(map(noiseIndex, 0, 1, 0, wheelWords.length));
             let word = wheelWords[wordIndex];
             
@@ -129,4 +141,6 @@ function drawWheel(opacityFactor) {
 }
 
 function mouseMoved() { lastMouseMoveTime = millis(); }
+// Touch moved ayuda a detectar movimiento en pantallas táctiles
+function touchMoved() { lastMouseMoveTime = millis(); return false; }
 function windowResized() { resizeCanvas(windowWidth, windowHeight); }
