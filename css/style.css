@@ -109,16 +109,7 @@ h1 {
     position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
     background: #0022FF; z-index: 9999; display: none;
 }
-.launch-btn {
-    color: var(--accent) !important; 
-    border: 1px solid var(--accent) !important;
-    text-align: center; padding: 15px !important;
-    margin-bottom: 30px !important; font-weight: bold; cursor: pointer;
-    transition: all 0.3s;
-}
-.launch-btn:hover {
-    background: var(--accent); color: #0022FF !important;
-}
+
 #art-meta {
     position: absolute; bottom: 30px; left: 30px; color: white;
     font-family: 'Courier Prime', Courier, monospace; font-size: 12px;
