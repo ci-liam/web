@@ -1,6 +1,8 @@
-/* js/main.js */
+let uiTimer;
+const artOverlayEl = document.getElementById('art-overlay');
+const artCloseEl = document.getElementById('art-close');
+const artMetaEl = document.getElementById('art-meta');
 
-// --- GESTIÓN DE MODALES (VENTANAS) ---
 function openModal(id) { 
     document.getElementById(id).style.display = 'flex'; 
 }
@@ -9,28 +11,40 @@ function closeModal(id) {
     document.getElementById(id).style.display = 'none'; 
 }
 
-// Cerrar si se hace click fuera de la ventana
 window.onclick = function(event) {
     if (event.target.classList.contains('modal-overlay')) {
         event.target.style.display = "none";
     }
 }
 
-// --- GESTIÓN DEL OVERLAY DE ARTE ---
-// Estas funciones controlan el "Telón" azul, no el código artístico en sí.
+function hideUI() {
+    if(artCloseEl) artCloseEl.classList.add('fade-out');
+    if(artMetaEl) artMetaEl.classList.add('fade-out');
+}
+
+function showUIAndResetTimer() {
+    clearTimeout(uiTimer); 
+    if(artCloseEl) artCloseEl.classList.remove('fade-out'); 
+    if(artMetaEl) artMetaEl.classList.remove('fade-out');
+    
+    uiTimer = setTimeout(hideUI, 3000);
+}
 
 function launchArt() {
-    // 1. Cerramos el menú
     closeModal('modal-art');
-    // 2. Mostramos el overlay
-    document.getElementById('art-overlay').style.display = 'block';
-    // 3. P5.js: Reactivamos el loop de dibujo
+    artOverlayEl.style.display = 'block';
     loop(); 
+
+    showUIAndResetTimer(); 
+    artOverlayEl.addEventListener('mousemove', showUIAndResetTimer);
 }
 
 function closeArt() {
-    // 1. Ocultamos el overlay
-    document.getElementById('art-overlay').style.display = 'none';
-    // 2. P5.js: Pausamos el loop para ahorrar batería
+    artOverlayEl.style.display = 'none';
     noLoop(); 
+
+    clearTimeout(uiTimer); 
+    artOverlayEl.removeEventListener('mousemove', showUIAndResetTimer); 
+    if(artCloseEl) artCloseEl.classList.remove('fade-out');
+    if(artMetaEl) artMetaEl.classList.remove('fade-out');
 }
