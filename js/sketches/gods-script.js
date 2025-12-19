@@ -27,6 +27,7 @@ function setup() {
 }
 
 function draw() {
+    // FONDO JAGUAR (ÁMBAR/TIERRA)
     if (epiphanyLevel > 0.1) {
         background(160, 90, 0, 100); 
     } else {
@@ -34,9 +35,9 @@ function draw() {
     }
 
     let timeStill = millis() - lastMouseMoveTime;
-    
     let mouseInside = (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height);
     
+    // ZONA SAGRADA (CENTRO)
     let dToCenter = dist(mouseX, mouseY, width/2, height/2);
     let sacredZoneRadius = min(width, height) * 0.25; 
     let inSacredZone = dToCenter < sacredZoneRadius;
@@ -54,6 +55,7 @@ function draw() {
 }
 
 function drawSkin(opacityFactor) {
+    // TEXTO NEGRO/CAFÉ (MANCHAS)
     fill(20, 10, 0, 255 * opacityFactor); 
 
     let scale = 0.002; 
