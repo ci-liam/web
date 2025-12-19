@@ -159,3 +159,13 @@ h1 {
     #btn-email { bottom: 5%; left: 50%; transform: translateX(-50%); }
     .modal-content { max-height: 80vh; }
 }
+
+body, canvas {
+    /* Círculo negro */
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="black"/></svg>') 10 10, auto;
+}
+
+.cursor-epiphany {
+    /* Círculo dorado brillante (#FFD700) para imitar la luz de las letras */
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="%23FFD700"/></svg>') 10 10, auto !important;
+}
