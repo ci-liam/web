@@ -22,6 +22,7 @@
         <span class="role">escritora, investigadora y programadora creativa</span>
     </div>
 
+    <div class="orbiter" id="btn-workshops" onclick="openModal('modal-workshops')">Talleres</div>
     <div class="orbiter" id="btn-writing" onclick="openModal('modal-writing')">Escritura</div>
     <div class="orbiter" id="btn-research" onclick="openModal('modal-research')">Investigación</div>
     <div class="orbiter" id="btn-art" onclick="openModal('modal-art')">Arte</div>
@@ -35,6 +36,26 @@
             Adaptación a código del cuento de Jorge Luis Borges<br>
             Perlin Noise<br>
             2025
+        </div>
+    </div>
+
+    <div id="modal-workshops" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-workshops')">&times;</span>
+            <h2>Talleres</h2>
+            <div class="item-list">
+                <a href="#" style="pointer-events: none; border-bottom: none;">
+                    Tejido → Programa → Poema
+                    <span class="meta">Bienal Universitaria de Arte Multimedia (2026)</span>
+                </a>
+                <div class="skills-block" style="margin-top: -10px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                    <p>
+                        Este taller explora las conexiones entre la programación, el tejido y la escritura poética. Los participantes descubrirán cómo los primeros programas computacionales fueron creados para la industria textil, mientras que tradiciones textiles de siglos ya plasmaban formas de codificación matemática. 
+                        <br><br>
+                        Con ejercicios prácticos de tejido básico, programación en JavaScript y escritura experimental inspirada en el Oulipo (Ouvroir de littérature potentielle), los participantes crearán una obra híbrida que materializa un algoritmo con lana, código y lenguaje. Esta experiencia demuestra cómo un conjunto de instrucciones puede crear tanto texturas físicas como literarias y conectar la historia computacional con las matemáticas y la literatura potencial.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -68,7 +89,7 @@
                 </a>
 
                 <div class="category-title">PERIODISMO (SELECCIÓN)</div>
-                <a href="#" style="pointer-events: none;">
+                <a href="#" style="pointer-events: none;"> 
                     La vibración de la ira <span class="meta">V Antología Feria del Libro NY, Smol Books, 2025</span>
                 </a>
                 <a href="https://indomita.media/mujeres-migrantes-violencia-ecuador/" target="_blank">
@@ -87,7 +108,6 @@
                     Análisis computacional de la variedad estilística en Azulinaciones
                     <span class="meta">Una aproximación estilométrica y de encaje léxico a la novela de Natasha Salguero</span>
                 </a>
-
                 <a href="#" style="pointer-events: none;">
                     Machine Error Ontologies <span class="meta">Glitch art y realismo especulativo</span>
                 </a>
@@ -97,7 +117,7 @@
                 </a>
                 <a href="https://repositorio.uasb.edu.ec/handle/10644/10056" target="_blank">
                     La casa rota
-                    <span class="meta"> Tesis de Maestría </span>
+                    <span class="meta">Tesis de Maestría en Literatura, Universidad Andina Simón Bolívar</span>
                 </a>
                 <a href="#" style="pointer-events: none;">
                     Catalogación del patrimonio inmaterial de las comunidades indígenas del cantón Guaranda
@@ -114,7 +134,7 @@
 
                 <div class="category-title">Habilidades de Investigación</div>
                 <div class="skills-block">
-                    Métodos de literatura comparada / Análisis narratológico / Close reading / Aplicación de teoría decolonial / Herramientas de humanidades digitales / NLP (Python) / Marcos de estudios de trauma / Análisis de semiótica social visual / Trabajo de campo etnográfico / Análisis de contenido 
+                    Métodos de literatura comparada / Análisis narratológico / Close reading / Herramientas de humanidades digitales / NLP (Python) / Teoría decolonial / Análisis cualitativo / Estudios de trauma / Semiótica social visual / Trabajo de campo etnográfico / Análisis de contenido
                 </div>
             </div>
         </div>
@@ -126,29 +146,28 @@
             <h2>Práctica Artística</h2>
             <div class="item-list">
                 <a onclick="launchArt()" style="cursor: pointer;">
-                    La escritura del Dios [abrir]
+                    La escritura del Dios [Lanzar]
                     <span class="meta">
                         Adaptación a código del cuento de Jorge Luis Borges<br>
                         Perlin Noise<br>
                         2025
                     </span>
                 </a>
-
                 <a href="#">Memory Flux <span class="meta">Bienal Universitaria de Arte Multimedia 2025</span></a>
             </div>
         </div>
     </div>
-    
+
     <div id="modal-about" class="modal-overlay">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-about')">&times;</span>
             <h2>Sobre mí</h2>
             <p style="font-size: 1.2rem; line-height: 1.6;">
-               Soy una escritora, investigadora y programadora creativa de Quito, Ecuador. 
-                     <br><br>
-                Cuento con maestrías con Distinción en Nuevos Medios (Universidad de Leeds) y Literatura (UASB). Mi escritura ha aparecido en antologías internacionales, como la V Antología de la Feria del Libro de Nueva York, y en diversas revistas literarias. Mi primera colección de ensayos, El pulso del código, ganadora de la Convocatoria Editorial de la Editorial Municipal de Cuenca 2025, se publicará en 2026. 
-                     <br><br>
-                Actualmente, desarrollo una investigación que entrelaza el análisis literario formal con la práctica computacional.
+              Soy escritora, investigadora y programadora creativa de Quito, Ecuador.
+              <br><br>
+              Cuento con Maestrías con Distinción en Nuevos Medios (Universidad de Leeds) y Literatura (UASB). Mi escritura ha aparecido en antologías internacionales, como la V Anthology of the NYC Book Fair, y en diversas revistas literarias. Mi primera colección de ensayos, El pulso del código, ganadora del Premio Casa Editorial Cuenca 2025, se publicará en 2026.
+              <br><br>
+              Actualmente, desarrollo una investigación que entrelaza el análisis literario formal con la práctica computacional.
             </p>
         </div>
     </div>
