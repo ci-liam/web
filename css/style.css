@@ -66,30 +66,21 @@ h1 {
     100% { transform: translateY(0px); }
 }
 
-/* --- POSICIONAMIENTO LATERAL (Absolute) --- */
-#btn-writing, #btn-research, #btn-art, #btn-about {
-    position: absolute;
-}
+/* --- POSICIONAMIENTO LATERAL --- */
+#btn-writing, #btn-research, #btn-art, #btn-about { position: absolute; }
 #btn-writing { top: 20%; left: 20%; animation-delay: 0s; }
 #btn-research { top: 20%; right: 20%; animation-delay: 1s; }
 #btn-art { bottom: 20%; left: 20%; animation-delay: 2s; }
 #btn-about { bottom: 20%; right: 20%; animation-delay: 3s; }
 
 
-/* --- WRAPPERS CENTRALES (Evitan saltos) --- */
+/* --- WRAPPERS CENTRALES --- */
 .center-wrapper {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%); 
-    z-index: 20;
-    width: auto;
-    display: flex;
-    justify-content: center;
+    position: absolute; left: 50%; transform: translateX(-50%); 
+    z-index: 20; width: auto; display: flex; justify-content: center;
 }
-
 #wrap-workshops { top: 15%; }
 #wrap-email { bottom: 10%; }
-
 #btn-workshops { animation-delay: 0.5s; }
 #btn-email { border-style: dashed; animation-delay: 4s; }
 
@@ -99,8 +90,7 @@ h1 {
     display: none; position: fixed; top: 0; left: 0;
     width: 100%; height: 100%; background: rgba(0, 34, 255, 0.95);
     z-index: 200; 
-    justify-content: center; 
-    align-items: center; /* Centrado por defecto en escritorio */
+    justify-content: center; align-items: center; /* Centrado Desktop */
 }
 
 .modal-content {
@@ -140,59 +130,41 @@ h1 {
 
 .item-list a:hover { color: var(--accent); padding-left: 10px; }
 
-.meta {
-    display: block; font-size: 0.8rem; opacity: 0.7; font-family: 'Courier New', monospace; margin-top: 3px;
-}
+.meta { display: block; font-size: 0.8rem; opacity: 0.7; font-family: 'Courier New', monospace; margin-top: 3px; }
 
-.skills-block {
-    font-family: 'Courier New', monospace; font-size: 0.9rem;
-    line-height: 1.6; color: #eee;
-}
+.skills-block { font-family: 'Courier New', monospace; font-size: 0.9rem; line-height: 1.6; color: #eee; }
 
 /* ARTE OVERLAY */
 #art-overlay {
     position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-    background: #B46400; 
-    z-index: 9999; display: none;
+    background: #B46400; z-index: 9999; display: none;
 }
-
 #art-meta {
     position: absolute; bottom: 30px; left: 30px; color: white;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 12px;
-    line-height: 1.4; pointer-events: none; opacity: 0.8; z-index: 10000;
+    font-size: 12px; line-height: 1.4; pointer-events: none; opacity: 0.8; z-index: 10000;
     transition: opacity 1.5s ease-in-out;
 }
-
 #art-close {
     position: absolute; top: 20px; right: 20px;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    color: white; border: 1px solid white; padding: 5px 10px;
+    font-size: 14px; color: white; border: 1px solid white; padding: 5px 10px;
     cursor: pointer; z-index: 10001; text-transform: uppercase;
-    background: rgba(0,0,0,0.5);
-    transition: opacity 1.5s ease-in-out;
+    background: rgba(0,0,0,0.5); transition: opacity 1.5s ease-in-out;
 }
-
 #art-close:hover { background: white; color: black; }
-
 .fade-out { opacity: 0 !important; pointer-events: none; }
 
-/* CURSORES DEL SCRIPT DE ARTE */
-#art-overlay canvas {
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="black"/></svg>') 10 10, auto;
-}
-
-.cursor-epiphany {
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="%23FFD700"/></svg>') 10 10, auto !important;
-}
+/* Cursores */
+#art-overlay canvas { cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="black"/></svg>') 10 10, auto; }
+.cursor-epiphany { cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="%23FFD700"/></svg>') 10 10, auto !important; }
 
 /* --- RESPONSIVE (MÓVIL) --- */
 @media (max-width: 768px) {
     h1 { font-size: 2.2rem; }
     .orbiter { padding: 8px 16px; font-size: 0.9rem; }
     
-    /* POSICIONES DE BOTONES */
+    /* POSICIONES */
     #wrap-workshops { top: 12%; } 
     #btn-writing { top: 22%; left: 5%; }
     #btn-research { top: 28%; right: 5%; }
@@ -200,24 +172,21 @@ h1 {
     #btn-about { top: 74%; right: 5%; bottom: auto; }
     #wrap-email { bottom: 5%; }
     
-    /* --- ARREGLO DEL SCROLL MÓVIL --- */
+    /* SCROLL MÓVIL */
     .modal-overlay {
-        /* IMPORTANTE: Desactivamos el centrado vertical en móvil */
+        /* Alineamos arriba para permitir scroll natural */
         align-items: flex-start; 
         padding-top: 40px; 
         padding-bottom: 40px;
-        overflow-y: scroll; /* Permite scroll en el contenedor padre si es necesario */
+        /* Permitimos scroll en el overlay */
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
     }
 
     .modal-content { 
-        /* Restablecemos alturas para evitar bloqueos */
         max-height: none; 
         height: auto;
-        margin-bottom: 50px;
-        
-        /* Habilitamos el toque físico */
-        overflow-y: visible; 
-        touch-action: pan-y;
-        -webkit-overflow-scrolling: touch;
+        margin-bottom: 80px; /* Espacio extra abajo */
+        overflow: visible;
     }
 }
