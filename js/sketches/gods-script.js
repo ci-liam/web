@@ -154,7 +154,8 @@ function mouseMoved() {
 
 function touchMoved() {
     lastMouseMoveTime = millis();
-    return false;
+
+    return true; 
 }
 
 function windowResized() {
