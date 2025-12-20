@@ -52,8 +52,6 @@ h1 {
     font-weight: 500; cursor: pointer; text-decoration: none;
     transition: all 0.3s ease; 
     white-space: nowrap; 
-    
-    /* Animación de flotación vertical */
     animation: float 6s ease-in-out infinite;
 }
 
@@ -100,17 +98,17 @@ h1 {
 .modal-overlay {
     display: none; position: fixed; top: 0; left: 0;
     width: 100%; height: 100%; background: rgba(0, 34, 255, 0.95);
-    z-index: 200; justify-content: center; align-items: center;
+    z-index: 200; 
+    justify-content: center; 
+    align-items: center; /* Centrado por defecto en escritorio */
 }
 
 .modal-content {
     background: transparent; width: 90%; max-width: 600px;
     text-align: left; position: relative;
     max-height: 85vh; 
-    overflow-y: auto; /* Scroll vertical activado */
+    overflow-y: auto; 
     padding-right: 10px;
-    /* Mejora el scroll en iOS */
-    -webkit-overflow-scrolling: touch;
 }
 
 .modal-content::-webkit-scrollbar { width: 5px; }
@@ -194,7 +192,7 @@ h1 {
     h1 { font-size: 2.2rem; }
     .orbiter { padding: 8px 16px; font-size: 0.9rem; }
     
-
+    /* POSICIONES DE BOTONES */
     #wrap-workshops { top: 12%; } 
     #btn-writing { top: 22%; left: 5%; }
     #btn-research { top: 28%; right: 5%; }
@@ -202,12 +200,24 @@ h1 {
     #btn-about { top: 74%; right: 5%; bottom: auto; }
     #wrap-email { bottom: 5%; }
     
+    /* --- ARREGLO DEL SCROLL MÓVIL --- */
+    .modal-overlay {
+        /* IMPORTANTE: Desactivamos el centrado vertical en móvil */
+        align-items: flex-start; 
+        padding-top: 40px; 
+        padding-bottom: 40px;
+        overflow-y: scroll; /* Permite scroll en el contenedor padre si es necesario */
+    }
 
     .modal-content { 
-        max-height: 80vh; 
-
-        -webkit-overflow-scrolling: touch; 
-        overflow-y: scroll; 
-        padding-bottom: 50px; /* Espacio extra abajo para que no se corte el texto */
+        /* Restablecemos alturas para evitar bloqueos */
+        max-height: none; 
+        height: auto;
+        margin-bottom: 50px;
+        
+        /* Habilitamos el toque físico */
+        overflow-y: visible; 
+        touch-action: pan-y;
+        -webkit-overflow-scrolling: touch;
     }
 }
