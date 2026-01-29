@@ -1,0 +1,388 @@
+root {
+    --bg-color: #0022FF; 
+    --text-color: #FFFFFF;
+    --accent: #CCFF00; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* === OVERLAY PRINCIPAL === */
+#workshop-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-color);
+    z-index: 9999;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#workshop-content {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding-bottom: 2rem;
+}
+
+/* === BOTÓN CLOSE === */
+#workshop-close {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: white;
+    border: 1px solid white;
+    padding: 5px 10px;
+    cursor: pointer;
+    z-index: 10001;
+    text-transform: uppercase;
+    background: rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+#workshop-close:hover {
+    background: var(--accent);
+    color: var(--bg-color);
+    border-color: var(--accent);
+}
+
+/* === HEADER === */
+header {
+    padding: 4rem 2rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    border-bottom: 4px solid var(--accent);
+    padding-bottom: 1rem;
+}
+
+.workshop-title {
+    font-size: 2rem;
+    margin: 2rem 0 0.5rem;
+    color: white;
+    font-weight: 300;
+}
+
+.workshop-subtitle {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+}
+
+.intro {
+    max-width: 1400px;
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    line-height: 1.8;
+    font-weight: 300;
+}
+
+.intro p {
+    margin-bottom: 1rem;
+}
+
+.line-decoration {
+    width: calc(100% - 4rem);
+    max-width: 1400px;
+    margin: 2rem auto;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* === GALERÍA === */
+.gallery {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 3rem;
+}
+
+.creation {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 0.6s ease forwards;
+}
+
+.creation:hover {
+    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.creation-visual {
+    position: relative;
+    height: 450px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.creation-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+.placeholder-img {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 0.9rem;
+    font-family: 'Courier New', monospace;
+}
+
+.creation-visual:hover img,
+.creation-visual:hover .placeholder-img {
+    opacity: 0.2;
+}
+
+/* === OVERLAY DE POEMA === */
+.poem-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.creation-visual:hover .poem-overlay {
+    opacity: 1;
+}
+
+.poem-text {
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: white;
+    max-width: 90%;
+}
+
+/* === INFO DE CREACIÓN === */
+.creation-info {
+    padding: 1.5rem;
+}
+
+.author {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.creation-meta {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+}
+
+.meta-tag {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.8rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    font-weight: 300;
+}
+
+/* === CONTROLES === */
+.controls {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.btn {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    border: 2px solid white;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.btn:hover {
+    background: white;
+    color: var(--bg-color);
+}
+
+.btn-audio:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg-color);
+}
+
+.btn.playing {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg-color);
+}
+
+/* === MODAL DE TEJIDO === */
+.textile-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 10002;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.textile-modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.textile-modal-content img {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+}
+
+.textile-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    font-size: 2.5rem;
+    color: var(--accent);
+    cursor: pointer;
+    font-weight: 300;
+}
+
+.textile-close:hover {
+    opacity: 0.7;
+}
+
+/* === FOOTER === */
+footer {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+footer p {
+    margin: 0.5rem 0;
+}
+
+/* === ANIMACIONES === */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.creation:nth-child(1) { animation-delay: 0.1s; }
+.creation:nth-child(2) { animation-delay: 0.2s; }
+.creation:nth-child(3) { animation-delay: 0.3s; }
+.creation:nth-child(4) { animation-delay: 0.4s; }
+.creation:nth-child(5) { animation-delay: 0.5s; }
+.creation:nth-child(6) { animation-delay: 0.6s; }
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    #workshop-close {
+        top: 10px;
+        right: 10px;
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+
+    header {
+        padding: 3rem 1.5rem 1.5rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .workshop-title {
+        font-size: 1.5rem;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+        gap: 2rem;
+    }
+
+    .creation-visual {
+        height: 350px;
+    }
+
+    .poem-overlay {
+        padding: 2rem;
+    }
+
+    .poem-text {
+        font-size: 0.9rem;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
