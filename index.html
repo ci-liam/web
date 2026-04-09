@@ -10,8 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Noto+Sans+Ogham&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/workshop-results.css">
 </head>
 <body>
 
@@ -35,14 +35,12 @@
         <a href="mailto:mirandagarces@gmail.com" class="orbiter" id="btn-email">Email me</a>
     </div>
 
-
     <div id="art-overlay" style="display: none;">
         <div id="art-close" onclick="closeArt()">[ CLOSE X ]</div>
         <div id="art-meta">
             The Writing of the God<br>
             Code adaptation of the short story by Jorge Luis Borges<br>
-            Perlin Noise<br>
-            2025
+            Perlin Noise<br>2025
         </div>
     </div>
 
@@ -51,135 +49,47 @@
             <span class="close-btn" onclick="closeModal('modal-workshops')">&times;</span>
             <h2>Workshops</h2>
             <div class="item-list">
-                <a href="#" style="pointer-events: none; border-bottom: none;">
-                    Weaving → Program → Poem
-                    <span class="meta">University Biennial of Multimedia Art (2026)</span>
-                </a>
-                <div class="skills-block" style="margin-top: -10px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.2);">
-                    <p>
-                        This workshop explores the connections between programming, weaving, and poetic writing. Participants will discover how early computer programs were created for the textile industry, while centuries-old textile traditions already embodied forms of mathematical coding. 
-                        <br><br>
-                        Through practical exercises in basic weaving, JavaScript programming, and experimental writing inspired by Oulipo (Ouvroir de littérature potentielle), participants will create a hybrid work that materializes an algorithm using wool, code, and language. This experience demonstrates how a set of instructions can create both physical and literary textures, bridging computational history with mathematics and potential literature.
-                    </p>
+                <div style="border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 20px;">
+                    <a href="#" style="pointer-events: none; border-bottom: none;">
+                        Weaving → Program → Poem
+                        <span class="meta">University Biennial of Multimedia Art (2026)</span>
+                    </a>
+                    <div class="skills-block" style="margin-top: 10px;">
+                        <p>This workshop explores the connections between programming, weaving, and poetic writing...</p>
+                        <button class="orbiter" onclick="openWorkshopResults()" style="font-size: 0.8rem; padding: 8px 15px; margin-top: 15px; animation: none; border-style: solid;">
+                            View Workshop Results [→]
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="modal-writing" class="modal-overlay">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal-writing')">&times;</span>
-            <h2>Writing</h2>
-            <div class="item-list">
-                 <div class="category-title">BOOKS</div>
-                 <a href="https://cultura.cuenca.gob.ec/noticia/convocatoria-editorial-2025-anuncia-a-sus-ganadores/?doing_wp_cron=1765986439.9229109287261962890625" target="_blank">
-                    El pulso del código <span class="meta"> Editorial Municipal de Cuenca, 2026 (Forthcoming)</span>
-                </a>
-                <a href="https://isbnecuador.com/catalogo.php?mode=detalle&nt=104715" target="_blank">
-                    Kimirina: 25 años de transformación de la salud comunitaria <span class="meta">Corporación Kimirina, 2025</span>
-                </a>
-
-                <div class="category-title">POETRY</div>
-                <a href="https://revistas.uasb.edu.ec/index.php/kipus/article/view/4492" target="_blank">
-                    Poemas inéditos <span class="meta">Revista Kipus, 2024</span>
-                </a>
-                <a href="https://www.uartes.edu.ec/sitio/download/pdp13_d01_dosier-1-pdf/?wpdmdl=66958&masterkey" target="_blank">
-                    El velo universal <span class="meta">Revista Pie de página, 2024</span>
-                </a>
-
-                <div class="category-title">ESSAYS (SELECTED)</div>
-                <a href="https://milmachetes.com/colapsos-marcados-por-el-simbolo/" target="_blank">
-                    Colapsos marcados por el símbolo <span class="meta">Revista Mil Machetes</span>
-                </a>
-                <a href="https://milmachetes.com/la-geometria-invisible-de-los-afectos/" target="_blank">
-                    La geometría invisible de los afectos <span class="meta">Revista Mil Machetes</span>
-                </a>
-
-                <div class="category-title">JOURNALISM (SELECTED)</div>
-                <a href="https://filnyc.org/wp-content/uploads/2026/01/Antologia-Vol-V.pdf" target="_blank">
-                    La vibración de la ira <span class="meta">V Anthology NY Book Fair, Smol Books, 2025</span>
-                </a>
-                <a href="https://indomita.media/mujeres-migrantes-violencia-ecuador/" target="_blank">
-                    Ser mujer migrante en Ecuador <span class="meta">Indómita, 2022 (Data Journalism)</span>
-                </a>
+    <div id="workshop-overlay" style="display: none;">
+        <div id="workshop-close" onclick="closeWorkshop()">[ CLOSE × ]</div>
+        <header>
+            <h1>RESULTS</h1>
+            <h2 class="workshop-title">Weaving → Program → Poem</h2>
+            <p class="workshop-subtitle">University Biennial of Multimedia Art (2026)</p>
+            <div class="intro">
+                <p>Participants discovered how early computer programs were created for the textile industry through practical exercises in weaving, JavaScript, and Oulipo-inspired writing.</p>
             </div>
-        </div>
-    </div>
-
-    <div id="modal-research" class="modal-overlay">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal-research')">&times;</span>
-            <h2>Research</h2>
-            <div class="item-list">
-                <a href="#" style="pointer-events: none;">
-                    Computational Analysis of Stylistic Variety in Azulinaciones
-                    <span class="meta">A word embedding and stylometric approach to Natasha Salguero's novel</span>
-                </a>
-                <a href="#" style="pointer-events: none;">
-                    Machine Error Ontologies <span class="meta">Glitch art & Speculative Realism</span>
-                </a>
-                <a href="https://revistas.usfq.edu.ec/index.php/anima/article/view/3255" target="_blank">
-                    “Si no olvido, no crezco”: trauma en la novela Fiebre de Carnaval
-                    <span class="meta">Revista Ánima, vol. 4, 2024</span>
-                </a>
-                <a href="https://repositorio.uasb.edu.ec/handle/10644/10056" target="_blank">
-                    La casa rota
-                    <span class="meta">MA Thesis in Literature, Universidad Andina Simón Bolívar</span>
-                </a>
-                <a href="#" style="pointer-events: none;">
-                    Catalogación del patrimonio inmaterial de las comunidades indígenas del cantón Guaranda 
-                    <span class="meta">Ethnography in Guaranda, Ecuador</span>
-                </a>
-                <a href="#" style="pointer-events: none;">
-                    Understanding visual self-representations of people with invisible disabilities in social media 
-                    <span class="meta">MA Dissertation, University of Leeds</span>
-                </a>
-                <a href="https://repositorio.puce.edu.ec/handle/123456789/32317" target="_blank">
-                    La curaduría de contenidos web y el periodismo
-                    <span class="meta">PUCE, 2013</span>
-                </a>
-
-                <div class="category-title">Research Skills</div>
-                <div class="skills-block">
-                    Comparative literature methods / Narratological analysis / Close reading methods / Digital humanities tools / NLP (Python: spaCy, Word2Vec) / Qualitative analysis / Trauma studies frameworks / Visual social semiotic analysis / Ethnographic fieldwork / Content analysis
-                </div>
+        </header>
+        <div class="line-decoration"></div>
+        <div class="gallery" id="gallery-en">
             </div>
-        </div>
     </div>
 
-    <div id="modal-art" class="modal-overlay">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal-art')">&times;</span>
-            <h2>Artistic Practice</h2>
-            <div class="item-list">
-                <a onclick="launchArt()" style="cursor: pointer;">
-                    The Writing of the God [Launch]
-                    <span class="meta">
-                        JS adaptation of the short story by Jorge Luis Borges<br>
-                        Perlin Noise<br>
-                        2025
-                    </span>
-                </a>
-                <a href="#">Memory Flux <span class="meta">University Biennial of Multimedia Art 2025</span></a>
-            </div>
+    <div id="textile-modal" class="textile-modal" style="display: none;">
+        <div class="textile-modal-content">
+            <span class="textile-close" onclick="closeTextileModal()">×</span>
+            <img id="textile-image" src="" alt="Physical textile">
         </div>
     </div>
-
-    <div id="modal-about" class="modal-overlay">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal-about')">&times;</span>
-            <h2>About</h2>
-            <p style="font-size: 1.2rem; line-height: 1.6;">
-              I am a writer, researcher and creative coder from Quito, Ecuador.
-              <br><br>
-              I hold MAs with Distinction in New Media (University of Leeds) and Literature (UASB). My writing has been featured in international anthologies, such as the V Anthology of the NYC Book Fair, and literary journals. My first essay collection, El pulso del código, winner of the 2025 Editorial Municipal de Cuenca Editorial Call, is forthcoming in 2026.
-              <br><br>
-              Currently, I am developing research that weaves together formal literary analysis and computational practice. 
-            </p>
-        </div>
-    </div>
+    <audio id="audio-player" style="display: none;"></audio>
 
     <script src="js/main.js"></script>
+    <script src="js/workshop-results.js"></script>
     <script src="js/sketches/gods-script.js"></script>
 </body>
 </html>
