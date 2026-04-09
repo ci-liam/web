@@ -48,3 +48,21 @@ function closeArt() {
     if(artCloseEl) artCloseEl.classList.remove('fade-out');
     if(artMetaEl) artMetaEl.classList.remove('fade-out');
 }
+
+// Funciones para el Workshop Overlay
+function openWorkshopResults() {
+    closeModal('modal-workshops');
+    const overlay = document.getElementById('workshop-overlay');
+    overlay.style.display = 'block';
+    overlay.style.opacity = '1';
+    document.body.style.overflow = 'hidden'; 
+}
+
+function closeWorkshop() {
+    const overlay = document.getElementById('workshop-overlay');
+    overlay.style.opacity = '0';
+    setTimeout(() => {
+        overlay.style.display = 'none';
+        document.body.style.overflow = 'hidden'; // Mantiene tu estado original
+    }, 300);
+}
