@@ -774,3 +774,15 @@ footer p {
         width: 100%;
     }
 }
+#workshop-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0022FF; /* Tu azul principal */
+    z-index: 5000;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: opacity 0.3s ease;
+}
