@@ -1,85 +1,52 @@
 // Cierre del overlay principal
 function closeWorkshop() {
     const overlay = document.getElementById('workshop-overlay');
-    overlay.style.opacity = '0';
-    setTimeout(() => {
-        overlay.style.display = 'none';
-        overlay.style.opacity = '1';
-    }, 300);
+    overlay.style.display = 'none';
 }
 
-// === MANEJO DE IMÁGENES (TEJIDO, ESCRITURA, CÓDIGO) ===
+// Escuchamos los clics en los botones de imágenes (Tejido, Escritura, Código)
 document.addEventListener('click', function(e) {
-    if (e.target && e.target.classList.contains('btn-textile')) {
-        e.stopPropagation();
-        const imagePath = e.target.getAttribute('data-textile');
-        if (imagePath) {
-            openTextileModal(imagePath);
-        }
+    const btn = e.target.closest('.btn-textile');
+    if (btn) {
+        const path = btn.getAttribute('data-textile');
+        console.log("Intentando abrir:", path); // Para debug en consola
+        openTextileModal(path);
     }
 });
 
-function openTextileModal(imageSrc) {
+function openTextileModal(src) {
     const modal = document.getElementById('textile-modal');
-    const image = document.getElementById('textile-image');
-    
-    // Mostramos un placeholder o cargamos la imagen
-    image.src = imageSrc;
+    const img = document.getElementById('textile-image');
+    img.src = src;
     modal.style.display = 'flex';
-    
-    // Bloqueamos el scroll del overlay del taller mientras el modal está abierto
-    document.getElementById('workshop-overlay').style.overflow = 'hidden';
 }
 
 function closeTextileModal() {
-    const modal = document.getElementById('textile-modal');
-    modal.style.display = 'none';
-    // Devolvemos el scroll
-    document.getElementById('workshop-overlay').style.overflow = 'auto';
+    document.getElementById('textile-modal').style.display = 'none';
 }
 
-// === MANEJO DE AUDIO ===
-let currentAudio = null;
-let currentButton = null;
+// Manejo de Audio
+let activeAudio = null;
+let activeBtn = null;
 
 document.addEventListener('click', function(e) {
-    if (e.target && e.target.classList.contains('btn-audio')) {
-        e.stopPropagation();
-        const btn = e.target;
-        const audioFile = btn.getAttribute('data-audio');
-        const audioPlayer = document.getElementById('audio-player');
+    const btn = e.target.closest('.btn-audio');
+    if (btn) {
+        const file = btn.getAttribute('data-audio');
+        const player = document.getElementById('audio-player');
 
-        if (currentAudio && !currentAudio.paused) {
-            currentAudio.pause();
-            currentAudio.currentTime = 0;
-            currentButton.textContent = '▶ Listen';
-            currentButton.classList.remove('playing');
-            if (currentButton === btn) {
-                currentAudio = null;
-                currentButton = null;
-                return;
-            }
+        if (activeAudio && !activeAudio.paused) {
+            activeAudio.pause();
+            activeBtn.textContent = '▶ Escuchar';
+            if (activeBtn === btn) { activeAudio = null; return; }
         }
 
-        audioPlayer.src = `audio/${audioFile}`;
-        audioPlayer.play();
-        btn.textContent = '⏸ Pause';
-        btn.classList.add('playing');
-        currentAudio = audioPlayer;
-        currentButton = btn;
+        player.src = `audio/${file}`;
+        player.play();
+        btn.textContent = '⏸ Pausa';
+        activeAudio = player;
+        activeBtn = btn;
 
-        audioPlayer.onended = () => {
-            btn.textContent = '▶ Listen';
-            btn.classList.remove('playing');
-            currentAudio = null;
-            currentButton = null;
-        };
-    }
-});
-
-// Cerrar modales con tecla ESC
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        closeTextileModal();
+        player.onended = () => { btn.textContent = '▶ Escuchar'; };
     }
 });
