@@ -267,44 +267,44 @@ h1 {
 }
 
 /* === MODAL DE TEJIDO === */
+/* Modal de Imagen (Tejido/Escritura/Código) */
 .textile-modal {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.95);
-    z-index: 10002;
-    display: flex;
-    align-items: center;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 10000; /* Por encima de todo */
+    display: none;
     justify-content: center;
-    padding: 2rem;
+    align-items: center;
+    padding: 20px;
 }
 
 .textile-modal-content {
     position: relative;
     max-width: 90%;
     max-height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.textile-modal-content img {
+#textile-image {
     max-width: 100%;
-    max-height: 80vh;
-    object-fit: contain;
+    max-height: 85vh; /* Evita que sea más alta que la pantalla */
+    object-fit: contain; /* Mantiene la proporción sin estirar */
+    border: 2px solid var(--accent);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
 .textile-close {
     position: absolute;
     top: -40px;
     right: 0;
-    font-size: 2.5rem;
     color: var(--accent);
+    font-size: 2.5rem;
     cursor: pointer;
-    font-weight: 300;
-}
-
-.textile-close:hover {
-    opacity: 0.7;
+    line-height: 1;
 }
 
 /* === FOOTER === */
