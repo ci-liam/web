@@ -55,12 +55,35 @@
                     </h3>
                     <span class="meta" style="display: block; margin-bottom: 10px;">University Biennial of Multimedia Art (2026)</span>
                     <div class="skills-block">
-                        <p>This workshop explores the connections between programming, weaving, and poetic writing. Participants created a hybrid work that materializes an algorithm using wool, code, and language.</p>
+                        <p>This workshop explores the connections between programming, weaving, and poetic writing.</p>
                         <button class="orbiter" onclick="openWorkshopResults()" style="font-size: 0.8rem; padding: 8px 15px; margin-top: 15px; animation: none; border-style: solid;">
                             View Workshop Results [→]
                         </button>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-writing" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-writing')">&times;</span>
+            <h2>Writing</h2>
+            <div class="item-list">
+                <div class="category-title">BOOKS</div>
+                <a href="https://cultura.cuenca.gob.ec/noticia/convocatoria-editorial-2025-anuncia-a-sus-ganadores/" target="_blank">
+                    El pulso del código <span class="meta">Editorial Municipal de Cuenca, 2026 (Forthcoming)</span>
+                </a>
+                <a href="https://isbnecuador.com/catalogo.php?mode=detalle&nt=104715" target="_blank">
+                    Kimirina: 25 years of community health transformation <span class="meta">Corporación Kimirina, 2025</span>
+                </a>
+                <div class="category-title">POETRY</div>
+                <a href="https://revistas.uasb.edu.ec/index.php/kipus/article/view/4492" target="_blank">
+                    Unpublished poems <span class="meta">Revista Kipus, 2024</span>
+                </a>
+                <a href="https://www.uartes.edu.ec/sitio/download/pdp13_d01_dosier-1-pdf/" target="_blank">
+                    El velo universal <span class="meta">Revista Pie de página, 2024</span>
+                </a>
             </div>
         </div>
     </div>
@@ -72,12 +95,50 @@
             <h2 class="workshop-title">Weaving → Program → Poem</h2>
             <p class="workshop-subtitle">University Biennial of Multimedia Art (2026)</p>
             <div class="intro">
-                <p>This workshop explores the connections between programming, weaving, and poetic writing. Participants created a hybrid work that materializes an algorithm using wool, code, and language.</p>
+                <p>Participants created a hybrid work that materializes an algorithm using wool, code, and language.</p>
             </div>
         </header>
         <div class="line-decoration"></div>
         <div class="gallery">
-            </div>
+            <article class="creation">
+                <div class="creation-visual">
+                    <img src="images/viz_anapaula.png" alt="p5.js circles visualization" style="opacity: 0.8;">
+                    <div class="poem-overlay">
+                        <div class="poem-text">
+                            <code style="color: var(--accent); font-size: 0.8rem;">INSTRUCTION: The final word of a verse is the start of the next.</code><br><br>
+                            I pick up the earth with my hands.<br>
+                            Earth that comes from the terrace.<br>
+                            Terrace where my friends rest.<br>
+                            Rest on hammocks.<br>
+                            Hammocks we brought from Jipijapa.<br>
+                            Jipijapa, place of my first bollo.<br>
+                            Bollo wrapped in plantain leaf.<br>
+                            Plantain that grows in heat.<br>
+                            Heat that rarely inhabits Quito.<br>
+                            Quito, the earth I step on.<br>
+                            Floor where the earth sleeps.<br>
+                            Earth I pick up with my hands.<br>
+                            Hands that embrace my friends.<br>
+                            Friends tired.<br>
+                            Tired like their hands.<br>
+                            Hands that have worked the earth.
+                        </div>
+                    </div>
+                </div>
+                <div class="creation-info">
+                    <div class="author">Ana Paula</div>
+                    <div class="creation-meta">
+                        <span class="meta-tag">⟨/⟩ p5.js code</span>
+                        <span class="meta-tag">🧶 physical textile</span>
+                        <span class="meta-tag">🔊 audio</span>
+                    </div>
+                    <div class="controls">
+                        <button class="btn btn-audio" data-audio="ana_paula.mp3">▶ Listen</button>
+                        <button class="btn btn-textile" data-textile="ana_paula_tejido.jpg">🧶 View textile</button>
+                    </div>
+                </div>
+            </article>
+        </div>
     </div>
 
     <div id="textile-modal" class="textile-modal" style="display: none;">
