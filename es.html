@@ -55,12 +55,35 @@
                     </h3>
                     <span class="meta" style="display: block; margin-bottom: 10px;">Bienal Universitaria de Arte Multimedia (2026)</span>
                     <div class="skills-block">
-                        <p>Este taller explora las conexiones entre la programación, el tejido y la escritura poética. Los participantes crearon una obra híbrida que materializa un algoritmo con lana, código y lenguaje.</p>
+                        <p>Este taller explora las conexiones entre la programación, el tejido y la escritura poética.</p>
                         <button class="orbiter" onclick="openWorkshopResults()" style="font-size: 0.8rem; padding: 8px 15px; margin-top: 15px; animation: none; border-style: solid;">
                             Ver resultados del taller [→]
                         </button>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-writing" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-writing')">&times;</span>
+            <h2>Escritura</h2>
+            <div class="item-list">
+                <div class="category-title">LIBROS</div>
+                <a href="https://cultura.cuenca.gob.ec/noticia/convocatoria-editorial-2025-anuncia-a-sus-ganadores/" target="_blank">
+                    El pulso del código <span class="meta">Editorial Municipal de Cuenca, 2026 (Próxima publicación)</span>
+                </a>
+                <a href="https://isbnecuador.com/catalogo.php?mode=detalle&nt=104715" target="_blank">
+                    Kimirina: 25 años de transformación de la salud comunitaria <span class="meta">Corporación Kimirina, 2025</span>
+                </a>
+                <div class="category-title">POESÍA</div>
+                <a href="https://revistas.uasb.edu.ec/index.php/kipus/article/view/4492" target="_blank">
+                    Poemas inéditos <span class="meta">Revista Kipus, 2024</span>
+                </a>
+                <a href="https://www.uartes.edu.ec/sitio/download/pdp13_d01_dosier-1-pdf/" target="_blank">
+                    El velo universal <span class="meta">Revista Pie de página, 2024</span>
+                </a>
             </div>
         </div>
     </div>
@@ -72,12 +95,50 @@
             <h2 class="workshop-title">Tejido → Programa → Poema</h2>
             <p class="workshop-subtitle">Bienal Universitaria de Arte Multimedia (2026)</p>
             <div class="intro">
-                <p>Este taller explora las conexiones entre la programación, el tejido y la escritura poética. Los participantes crearon una obra híbrida que materializa un algoritmo con lana, código y lenguaje.</p>
+                <p>Los participantes crearon una obra híbrida que materializa un algoritmo con lana, código y lenguaje.</p>
             </div>
         </header>
         <div class="line-decoration"></div>
         <div class="gallery">
-             </div>
+             <article class="creation">
+                <div class="creation-visual">
+                    <img src="images/viz_anapaula.png" alt="p5.js circles visualization" style="opacity: 0.8;">
+                    <div class="poem-overlay">
+                        <div class="poem-text">
+                            <code style="color: var(--accent); font-size: 0.8rem;">INSTRUCCIÓN: La palabra final del verso es el inicio del siguiente.</code><br><br>
+                            Recojo con las manos la tierra.<br>
+                            Tierra que viene de la terraza.<br>
+                            Terraza donde mis amigos reposan.<br>
+                            Reposan sobre hamacas.<br>
+                            Hamacas que trajimos de Jipijapa.<br>
+                            Jipijapa lugar de mi primer bollo.<br>
+                            Bollo envuelto en hoja de plátano.<br>
+                            Plátano que crece en calor.<br>
+                            Calor que rara vez habita Quito.<br>
+                            Quito la tierra que yo piso.<br>
+                            Piso donde duerme la tierra.<br>
+                            Tierra que recojo con las manos.<br>
+                            Manos que abrazan a mis amigos.<br>
+                            Amigos cansados.<br>
+                            Cansados como sus manos.<br>
+                            Manos que han trabajado la tierra.
+                        </div>
+                    </div>
+                </div>
+                <div class="creation-info">
+                    <div class="author">Ana Paula</div>
+                    <div class="creation-meta">
+                        <span class="meta-tag">⟨/⟩ p5.js code</span>
+                        <span class="meta-tag">🧶 tejido físico</span>
+                        <span class="meta-tag">🔊 audio</span>
+                    </div>
+                    <div class="controls">
+                        <button class="btn btn-audio" data-audio="ana_paula.mp3">▶ Escuchar</button>
+                        <button class="btn btn-textile" data-textile="ana_paula_tejido.jpg">🧶 Ver tejido</button>
+                    </div>
+                </div>
+            </article>
+        </div>
     </div>
 
     <div id="textile-modal" class="textile-modal" style="display: none;">
