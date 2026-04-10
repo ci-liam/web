@@ -38,30 +38,9 @@
     <div id="art-overlay" style="display: none;">
         <div id="art-close" onclick="closeArt()">[ CERRAR X ]</div>
         <div id="art-meta">
-            La escritura del Dios<br>
-            Adaptación a código del cuento de Jorge Luis Borges<br>
-            Perlin Noise<br>2025
-        </div>
-    </div>
-
-    <div id="modal-workshops" class="modal-overlay">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal-workshops')">&times;</span>
-            <h2>Talleres</h2>
-            <div class="item-list">
-                <div style="border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 20px;">
-                    <h3 style="color: #FFFFFF; font-size: 1.3rem; margin-bottom: 5px; font-weight: 500;">
-                        Tejido → Programa → Poema
-                    </h3>
-                    <span class="meta">Bienal Universitaria de Arte Multimedia (2026)</span>
-                    <div class="skills-block" style="margin-top: 10px;">
-                        <p>Este taller explora las conexiones entre la programación, el tejido y la escritura poética. Los participantes descubrirán cómo los primeros programas computacionales fueron creados para la industria textil.</p>
-                        <button class="orbiter" onclick="openWorkshopResults()" style="font-size: 0.8rem; padding: 8px 15px; margin-top: 15px; animation: none; border-style: solid;">
-                            Ver resultados del taller [→]
-                        </button>
-                    </div>
-                </div>
-            </div>
+           La escritura del Dios<br>
+           Adaptación a código del cuento de Jorge Luis Borges<br>
+           Perlin Noise<br>2025
         </div>
     </div>
 
@@ -70,8 +49,8 @@
             <span class="close-btn" onclick="closeModal('modal-writing')">&times;</span>
             <h2>Escritura</h2>
             <div class="item-list">
-                 <div class="category-title">LIBROS</div>
-                 <a href="https://cultura.cuenca.gob.ec/noticia/convocatoria-editorial-2025-anuncia-a-sus-ganadores/" target="_blank">
+                <div class="category-title">LIBROS</div>
+                <a href="https://cultura.cuenca.gob.ec/noticia/convocatoria-editorial-2025-anuncia-a-sus-ganadores/" target="_blank">
                     El pulso del código <span class="meta">Editorial Municipal de Cuenca, 2026 (Próxima publicación)</span>
                 </a>
                 <a href="https://isbnecuador.com/catalogo.php?mode=detalle&nt=104715" target="_blank">
@@ -103,7 +82,7 @@
                 <a href="#" style="pointer-events: none;">Understanding visual self-representations of people with invisible disabilities in social media <span class="meta">Tesis de Maestría, University of Leeds</span></a>
                 <a href="https://repositorio.puce.edu.ec/handle/123456789/32317" target="_blank">La curaduría de contenidos web y el periodismo <span class="meta">PUCE, 2013</span></a>
                 <div class="category-title">Habilidades de Investigación</div>
-                <div class="skills-block">Métodos de literatura comparada / Análisis narratológico / Close reading / Herramientas de humanidades digitales / NLP (Python: spaCy, Word2Vec) / Teoría decolonial / Análisis cualitativo / Estudios de trauma / Semiótica social visual / Trabajo de campo etnográfico / Análisis de contenido</div>
+                <div class="skills-block">Métodos de literatura comparada / Análisis narratológico / Close reading / Herramientas de humanidades digitales / NLP (Python: spaCy, Word2Vec) / Análisis cualitativo / Estudios de trauma / Semiótica social visual / Trabajo de campo etnográfico / Análisis de contenido</div>
             </div>
         </div>
     </div>
@@ -113,7 +92,7 @@
             <span class="close-btn" onclick="closeModal('modal-art')">&times;</span>
             <h2>Práctica Artística</h2>
             <div class="item-list">
-                <a onclick="launchArt()" style="cursor: pointer;">La escritura del Dios [abrir] <span class="meta">Adaptación a código del cuento de Jorge Luis Borges<br>Perlin Noise<br>2025</span></a>
+                <a onclick="launchArt()" style="cursor: pointer;">La escritura del Dios [Abrir] <span class="meta">Adaptación a código del cuento de Jorge Luis Borges<br>Perlin Noise<br>2025</span></a>
                 <a href="#">Memory Flux <span class="meta">Bienal Universitaria de Arte Multimedia 2025</span></a>
             </div>
         </div>
@@ -128,56 +107,126 @@
               <br><br>
               Cuento con maestrías con Distinción en Nuevos Medios (Leeds) y Literatura (UASB). Mi primera colección de ensayos, El pulso del código, ganador de la Convocatoria Editorial Municipal de Cuenca 2025, se publicará en 2026.
               <br><br>
-              Actualmente, desarrollo una investigación que entrelaza el análisis literario formal con la práctica computacional.
+              Actualmente, desarrollo una investigación que entrelaza el análisis literario formal con la práctica computacional. 
             </p>
+        </div>
+    </div>
+
+    <div id="modal-workshops" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-workshops')">&times;</span>
+            <h2>Talleres</h2>
+            <div class="item-list">
+                <div style="border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 20px;">
+                    <h3 style="color: #FFFFFF; font-size: 1.3rem; margin-bottom: 5px; font-weight: 500;">
+                        Tejido → Programa → Poema
+                    </h3>
+                    <span class="meta">Bienal Universitaria de Arte Multimedia (2026)</span>
+                    <div class="skills-block">
+                        <p>Explorando las conexiones entre la programación, el tejido y la escritura poética.</p>
+                        <button class="orbiter" onclick="openWorkshopResults()" style="font-size: 0.8rem; padding: 8px 15px; margin-top: 15px; animation: none; border-style: solid;">
+                            Ver guiones tejidos [→]
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <div id="workshop-overlay" style="display: none;">
         <div id="workshop-close" onclick="closeWorkshop()">[ CERRAR × ]</div>
         <header>
-            <h1>RESULTADOS</h1>
+            <h1>GUIONES TEJIDOS</h1>
             <h2 class="workshop-title">Tejido → Programa → Poema</h2>
-            <p class="workshop-subtitle">Bienal Universitaria de Arte Multimedia (2026)</p>
-            <div class="intro">
-                <p>Los participantes crearon una obra híbrida que materializa un algoritmo con lana, código y lenguaje.</p>
-            </div>
+            <div class="line-decoration"></div>
         </header>
-        <div class="line-decoration"></div>
-       <div class="gallery" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px;">
-    <article class="creation">
-        <div class="creation-visual">
-            <img src="images/viz_anapaula.jpg" alt="visualización p5.js" style="width: 100%; height: 100%; object-fit: cover;">
-            <div class="poem-overlay">
-                <div class="poem-text">
-                    <code style="color: var(--accent); font-size: 0.8rem;">INSTRUCCIÓN: La palabra final del verso es el inicio del siguiente.</code><br><br>
-                    Recojo con las manos la tierra...
+        <div class="gallery" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px;">
+            
+            <article class="creation">
+                <div class="creation-visual">
+                    <img src="images/viz_anapaula.jpg" alt="visualización p5.js" style="width: 100%; height: 100%; object-fit: cover; position: absolute; z-index: 1;">
+                    <div class="poem-overlay" style="position: relative; z-index: 2;">
+                        <div class="poem-text">
+                            Recojo con las manos la tierra <br>Tierra que viene de la terraza <br>Terraza donde mis amigos reposan <br> Reposan sobre hamacas <br> Hamacas que trajimos de Jipijapa <br>Jipijapa lugar de mi primer bollo <br>Bollo envuelto en hoja de plátano <br>Plátano que crece en calor <br>Calor que rara vez habita Quito <br>Quito la tierra que yo piso <br>Piso donde duerme la tierra <br>Tierra que recojo con las manos <br>Manos que abrazan a mis amigos <br>Amigos cansados <br>Cansados como sus manos <br>Manos que han trabajado la tierra
+                        </div>
+                    </div>
                 </div>
-            </div>
+                <div class="creation-info">
+                    <div class="author">Ana Paula</div>
+                    <div class="controls">
+                        <button class="btn btn-audio" data-audio="ana_paula.mp3">▶ Escuchar</button>
+                        <button class="btn btn-textile" data-textile="images/textiles/ana_paula_tejido.jpg">🧶 Ver tejido</button>
+                        <button class="btn btn-textile" data-textile="images/es_anapaula.jpg">✍️ Ver escritura</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="creation">
+                <div class="creation-visual">
+                    <img src="images/viz_dani.jpg" alt="visualización p5.js" style="width: 100%; height: 100%; object-fit: cover; position: absolute; z-index: 1;">
+                    <div class="poem-overlay" style="position: relative; z-index: 2;">
+                        <div class="poem-text">Transformar la materia en relato<br>Ser memoria como el verde páramo<br>Hacer el mapa como ciencia exacta<br>Jugar a describir el mundo<br>Ovillada, envuelta, como siempre<br> </div>
+                    </div>
+                </div>
+                <div class="creation-info">
+                    <div class="author">Daniela</div>
+                    <div class="controls">
+                        <button class="btn btn-audio" data-audio="dani.mp3">▶ Escuchar</button>
+                        <button class="btn btn-textile" data-textile="images/cod_dani.jpg">⟨/⟩ Ver código</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="creation">
+                <div class="creation-visual">
+                    <img src="images/viz_estefi.jpg" alt="visualización p5.js" style="width: 100%; height: 100%; object-fit: cover; position: absolute; z-index: 1;">
+                    <div class="poem-overlay" style="position: relative; z-index: 2; background: rgba(0,0,0,0.4);">
+                        <div class="poem-text">Era un pedazo de sol introduciéndose por la ventana, abriéndose paso entre las cortinas de cemento que pujaban por contenerlo...</div>
+                    </div>
+                </div>
+                <div class="creation-info">
+                    <div class="author">Estefanía</div>
+                    <div class="controls">
+                        <button class="btn btn-audio" data-audio="estefi.mp3">▶ Escuchar</button>
+                        <button class="btn btn-textile" data-textile="images/viz_estefi.jpg">✍️ Ver escritura</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="creation">
+                <div class="creation-visual">
+                    <img src="images/viz_etsx.jpg" alt="visualización p5.js" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="creation-info">
+                    <div class="author">etsx</div>
+                    <div class="controls">
+                        <button class="btn btn-textile" data-textile="images/es_etsx.jpg">✍️ Ver escritura</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="creation">
+                <div class="creation-visual">
+                    <img src="images/viz_fer.jpg" alt="visualización p5.js" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="creation-info">
+                    <div class="author">Fer</div>
+                    <div class="controls">
+                        <button class="btn btn-textile" data-textile="images/cod_fer.jpg">⟨/⟩ Ver código</button>
+                        <button class="btn btn-textile" data-textile="images/es_fer.jpg">✍️ Ver escritura</button>
+                    </div>
+                </div>
+            </article>
         </div>
-        <div class="creation-info">
-            <div class="author">Ana Paula</div>
-            <div class="creation-meta">
-                <span class="meta-tag">⟨/⟩ visualización p5.js</span>
-                <span class="meta-tag">✍️ escritura a mano</span>
-                <span class="meta-tag">🧶 tejido físico</span>
-                <span class="meta-tag">🔊 audio</span>
-            </div>
-            <div class="controls">
-                <button class="btn btn-audio" data-audio="ana_paula.mp3">▶ Escuchar</button>
-                <button class="btn btn-textile" data-textile="images/textiles/ana_paula_tejido.jpg">🧶 Ver tejido</button>
-                <button class="btn btn-textile" data-textile="images/es_anapaula.jpg">✍️ Ver escritura</button>
-            </div>
-        </div>
-    </article>
     </div>
 
-        <div id="textile-modal" class="textile-modal" style="display: none;">
-        <div class="textile-modal-content">
-            <span class="textile-close" onclick="closeTextileModal()">×</span>
-            <img id="textile-image" src="" alt="Tejido físico">
+    <div id="textile-modal" class="textile-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; justify-content: center; align-items: center;">
+        <div class="textile-modal-content" style="max-width: 90%; max-height: 90%;">
+            <span class="textile-close" onclick="closeTextileModal()" style="color: white; font-size: 40px; cursor: pointer; position: absolute; top: 20px; right: 30px;">&times;</span>
+            <img id="textile-image" src="" style="max-width: 100%; max-height: 80vh; border: 2px solid #0022FF;">
         </div>
     </div>
+
     <audio id="audio-player" style="display: none;"></audio>
 
     <script src="js/main.js"></script>
