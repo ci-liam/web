@@ -31,26 +31,26 @@
     <div class="orbiter" id="btn-art" onclick="openModal('modal-art')">Art</div>
     <div class="orbiter" id="btn-about" onclick="openModal('modal-about')">About</div>
 
-        <div id="art-overlay" style="display: none;">
-        <div id="art-close" onclick="closeArt()">[ CERRAR X ]</div>
-        <div id="art-meta">
-           The Writing of the God<br>
-            Adaptación a código del cuento de Jorge Luis Borges<br>
-            Perlin Noise<br>2025
-        </div>
-    </div>
-
     <div class="center-wrapper" id="wrap-email">
         <a href="mailto:mirandagarces@gmail.com" class="orbiter" id="btn-email">Email me</a>
     </div>
 
-  <div id="modal-writing" class="modal-overlay">
+    <div id="art-overlay" style="display: none;">
+        <div id="art-close" onclick="closeArt()">[ CLOSE X ]</div>
+        <div id="art-meta">
+           The Writing of the God<br>
+           Code adaptation of the short story by Jorge Luis Borges<br>
+           Perlin Noise<br>2025
+        </div>
+    </div>
+
+    <div id="modal-writing" class="modal-overlay">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-writing')">&times;</span>
             <h2>Writing</h2>
             <div class="item-list">
                 <div class="category-title">BOOKS</div>
-                <a href="https://cultura.cuenca.gob.ec/noticia/convocatoria-editorial-2025-anuncia-a-sus-ganadores/?doing_wp_cron=1765986439.9229109287261962890625" target="_blank">
+                <a href="https://cultura.cuenca.gob.ec/noticia/convocatoria-editorial-2025-anuncia-a-sus-ganadores/" target="_blank">
                     El pulso del código <span class="meta">Editorial Municipal de Cuenca, 2026 (Forthcoming)</span>
                 </a>
                 <a href="https://isbnecuador.com/catalogo.php?mode=detalle&nt=104715" target="_blank">
@@ -58,7 +58,7 @@
                 </a>
                 <div class="category-title">POETRY</div>
                 <a href="https://revistas.uasb.edu.ec/index.php/kipus/article/view/4492" target="_blank">Unpublished poems <span class="meta">Revista Kipus, 2024</span></a>
-                <a href="https://www.uartes.edu.ec/sitio/download/pdp13_d01_dosier-1-pdf/?wpdmdl=66958&masterkey" target="_blank">El velo universal <span class="meta">Revista Pie de página, 2024</span></a>
+                <a href="https://www.uartes.edu.ec/sitio/download/pdp13_d01_dosier-1-pdf/" target="_blank">El velo universal <span class="meta">Revista Pie de página, 2024</span></a>
                 <div class="category-title">ESSAYS (SELECTED)</div>
                 <a href="https://milmachetes.com/colapsos-marcados-por-el-simbolo/" target="_blank">Colapsos marcados por el símbolo <span class="meta">Revista Mil Machetes</span></a>
                 <a href="https://milmachetes.com/la-geometria-invisible-de-los-afectos/" target="_blank">La geometría invisible de los afectos <span class="meta">Revista Mil Machetes</span></a>
@@ -78,9 +78,9 @@
                 <a href="#" style="pointer-events: none;">Machine Error Ontologies <span class="meta">Glitch art & Speculative Realism</span></a>
                 <a href="https://revistas.usfq.edu.ec/index.php/anima/article/view/3255" target="_blank">“Si no olvido, no crezco”: trauma en la novela Fiebre de Carnaval <span class="meta">Revista Ánima, vol. 4, 2024</span></a>
                 <a href="https://repositorio.uasb.edu.ec/handle/10644/10056" target="_blank">La casa rota <span class="meta">MA Thesis in Literature, Universidad Andina Simón Bolívar</span></a>
-                <a href="#" style="pointer-events: none;">Catalogación del patrimonio inmaterial de las comunidades indígenas del cantón Guaranda <span class="meta">Ethnography in Guaranda, Ecuador</span></a>
+                <a href="#" style="pointer-events: none;">Inmaterial heritage cataloging of indigenous communities in Guaranda <span class="meta">Ethnography in Guaranda, Ecuador</span></a>
                 <a href="#" style="pointer-events: none;">Understanding visual self-representations of people with invisible disabilities in social media <span class="meta">MA Dissertation, University of Leeds</span></a>
-                <a href="https://repositorio.puce.edu.ec/handle/123456789/32317" target="_blank">La curaduría de contenidos web y el periodismo <span class="meta">PUCE, 2013</span></a>
+                <a href="https://repositorio.puce.edu.ec/handle/123456789/32317" target="_blank">Web content curation and journalism <span class="meta">PUCE, 2013</span></a>
                 <div class="category-title">Research Skills</div>
                 <div class="skills-block">Comparative literature methods / Narratological analysis / Close reading methods / Digital humanities tools / NLP (Python: spaCy, Word2Vec) / Qualitative analysis / Trauma studies frameworks / Visual social semiotic analysis / Ethnographic fieldwork / Content analysis</div>
             </div>
@@ -172,6 +172,7 @@
                     <div class="author">Daniela</div>
                     <div class="controls">
                         <button class="btn btn-audio" data-audio="dani.mp3">▶ Listen</button>
+                        <button class="btn btn-textile" data-textile="images/textiles/dani_tejido.jpg">🧶 View knitting</button>
                         <button class="btn btn-textile" data-textile="images/cod_dani.jpg">⟨/⟩ View code</button>
                     </div>
                 </div>
@@ -181,14 +182,19 @@
                 <div class="creation-visual">
                     <img src="images/viz_estefi.jpg" alt="p5.js visualization" style="width: 100%; height: 100%; object-fit: cover; position: absolute; z-index: 1;">
                     <div class="poem-overlay" style="position: relative; z-index: 2; background: rgba(0,0,0,0.4);">
-                        <div class="poem-text">Era un pedazo de sol introduciéndose por la ventana, abriéndose paso entre las cortinas de cemento que pujaban por contenerlo...</div>
+                        <div class="poem-text">Era un pedazo de sol introduciéndose por la ventana, abriéndose paso entre las cortinas de cemento que pujaban por contenerlo <br>
+
+Era el canto de los gorriones pululando en el sueño, un trino, dos, tres, cuatro, ad infinitum, hasta hacer un coro que no se puede ignorar<br>
+
+Eran bocinas de autos, voces de vendedoras de periódicos, motores de motocicletas, todos al unísono debajo del sol que ha vencido a mis cortinas, que ha vencido la noche, que me arranca del ciclo REM al que me quiero aferrar <br> </div>
                     </div>
                 </div>
                 <div class="creation-info">
                     <div class="author">Estefanía</div>
                     <div class="controls">
                         <button class="btn btn-audio" data-audio="estefi.mp3">▶ Listen</button>
-                        <button class="btn btn-textile" data-textile="images/es_estefi.jpg">✍️ View handwriting</button>
+                        <button class="btn btn-textile" data-textile="images/textiles/estefi_tejido.jpg">🧶 View knitting</button>
+                        <button class="btn btn-textile" data-textile="images/viz_estefi.jpg">✍️ View handwriting</button>
                     </div>
                 </div>
             </article>
@@ -212,6 +218,7 @@
                 <div class="creation-info">
                     <div class="author">Fer</div>
                     <div class="controls">
+                        <button class="btn btn-textile" data-textile="images/textiles/fer_tejido.jpg">🧶 View knitting</button>
                         <button class="btn btn-textile" data-textile="images/cod_fer.jpg">⟨/⟩ View code</button>
                         <button class="btn btn-textile" data-textile="images/es_fer.jpg">✍️ View handwriting</button>
                     </div>
@@ -223,14 +230,14 @@
     <div id="textile-modal" class="textile-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; justify-content: center; align-items: center;">
         <div class="textile-modal-content" style="max-width: 90%; max-height: 90%;">
             <span class="textile-close" onclick="closeTextileModal()" style="color: white; font-size: 40px; cursor: pointer; position: absolute; top: 20px; right: 30px;">&times;</span>
-            <img id="textile-image" src="" style="max-width: 100%; max-height: 80vh; border: 2px solid #00ff00;">
+            <img id="textile-image" src="" style="max-width: 100%; max-height: 80vh; border: 2px solid #0022FF;">
         </div>
     </div>
 
     <audio id="audio-player" style="display: none;"></audio>
-    <div id="art-overlay" style="display: none;"></div>
 
     <script src="js/main.js"></script>
     <script src="js/workshop-results.js"></script>
+    <script src="js/sketches/gods-script.js"></script>
 </body>
 </html>
